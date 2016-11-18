@@ -4,7 +4,7 @@ fis.require('jello')(fis);
 fis
   // 排除指定目录
   .set('project.files', ['**', '.**', '.**/**'])
-  .set('project.ignore', ['dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+  .set('project.ignore', ['.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
   .set('project.fileType.text', 'es');
 
 
@@ -20,7 +20,7 @@ fis.match('/static/js/**.js', {
 });
 
 // 设置 *.scss 配置配置项
-fis.match('/static/stylesheets/**.scss', {
+fis.match('/static/scss/**.scss', {
   isMod: true,
   rExt: '.css',
   parser: fis.plugin('node-sass')
@@ -31,6 +31,13 @@ fis.match('/static/stylesheets/**.scss', {
 fis.media('prod')
   .match('::package', {
     packager: fis.plugin('deps-pack', {
-      
+      'pkg/js/main.js': [
+        '/static/libs/vue.js',
+        '/static/libs/vue-tap.js'
+      ],
+      'pkg/css/main.css': [
+        '/static/scss/weui.css',
+        '/static/scss/common.scss'
+      ]
     })
   });

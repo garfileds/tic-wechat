@@ -3,7 +3,7 @@
 <%@ taglib uri="/fis" prefix="fis"%>
 <!DOCTYPE html><fis:html lang="en">
     <fis:head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <title>腾讯俱乐部项目池</title>
@@ -16,7 +16,8 @@
         <![endif]-->
 
         <fis:block name="style">
-            <fis:require id="/static/scss/weui.css" />            
+            <fis:require id="/static/scss/weui.css" />
+            <fis:require id="/static/scss/common.scss" />
         </fis:block>
     </fis:head>
 
