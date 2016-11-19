@@ -1,0 +1,59 @@
+@import "./_input";
+
+/*reset weui*/
+.weui-btn_primary {
+	background-color: #088fd9;
+}
+
+.weui-btn_primary:not(.weui-btn_disabled):active {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #0471ad;
+}
+
+header {
+	margin-bottom: 1rem;
+
+	h2 {
+		padding: .8rem 0;
+	    text-align: center;
+	    border-bottom: solid 1px #ccc4c4;
+	    background: #f8f8f8;
+	}
+}
+
+main {
+	text-align: center;
+}
+
+$error: #f05979;
+.tic-form {
+	padding: 0 15%;
+
+	input {
+		width: 100%;
+	}
+
+	.tic-field.tic-error > input {
+		border-color: $error;
+	}
+
+	.tic-field:first-child {
+		margin-top: 1rem;
+	}
+
+	.tic-field:last-child {
+		margin-top: 1rem
+	}
+
+	.tic-field {
+		& > .weui-btn {
+			width: 100%;
+		}
+	}
+
+	.tic-error-tip {
+		color: $error;
+		text-align: left;
+		margin-bottom: .6rem;
+	}
+}

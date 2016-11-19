@@ -9,14 +9,29 @@ fis
 
 
 /****************单文件处理插件*****************/
-// 标记 staitc/js 下面的 js 为模块化代码。
+//node_module require支持
+fis.hook('commonjs', {
+  extList: ['.js', '.jsx', '.es', '.ts', '.tsx']
+});
+
+
+fis.unhook('components');
+fis.hook('node_modules');
+fis.match('node_modules/**.js', {
+    isMod: true
+});
+
 fis.match('/static/js/**.js', {
-  isMod: true,
   parser: fis.plugin('babel-5.x', {
       blacklist: ['regenerator'],
       stage: 3
   }),
   rExt: 'js'
+});
+
+// 标记 staitc/js/module 下面的 js 为模块化代码。
+fis.match('/static/js/module/**.js', {
+  isMod: true
 });
 
 // 设置 *.scss 配置配置项
@@ -37,7 +52,8 @@ fis.media('prod')
       ],
       'pkg/css/main.css': [
         '/static/scss/weui.css',
-        '/static/scss/common.scss'
+        '/static/scss/common.scss',
+        '/page/widget/footer/nav.scss'
       ]
     })
   });
