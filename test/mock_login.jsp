@@ -1,6 +1,5 @@
 {
-	"code": "error",
-	"userid": "u001"
+	"code": "ok"
 }
 
 <%
