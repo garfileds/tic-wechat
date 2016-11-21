@@ -3,28 +3,33 @@
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
+let formSerialize = require('../module/formSerialize');
+
 const urlValidUser = '/fn/valid/user';
 
-let formRegister = new Vue({
+let formLogin = new Vue({
 	el: '#formLogin',
 	data: {
 		hasError: false,
-		userName: '',
+		username: '',
 		password: ''
 	},
     methods : {
         validUser: function(params) {
             fetch(urlValidUser, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                },
                 credentials: 'same-origin',
-                body: new FormData(formRegister.$el)
+                body: formSerialize(formLogin.$el)
             })
             .then(response => response.json())
             .then(function(data) {
-                if (data.code == 'ok') {
-                    formRegister.$el.submit();
+                if (data.code === 'ok') {
+                    formLogin.$el.submit();
                 } else {
-                    formRegister.hasError = true;
+                    formLogin.hasError = true;
                 }
             })
             .catch(function(error) {

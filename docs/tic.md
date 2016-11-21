@@ -34,7 +34,7 @@
     -request `[POST]`
     ```
     {
-        userName: "xxx",
+        username: "xxx",
         password: "xxx"
     }
     ```
@@ -45,33 +45,31 @@
    - jsp: /page/user/register.jsp
    
    - api: /fn/valid/userName `[POST]`
-   - request
-   ```
-   {
-     userName: "xxx",
-     password: "xxx",
-     passConfirm: "xxx"
-   }
-   ```
-   - response `[JSON]`
-   ```
-   {
-     code: "ok"/"error"
-   }
-   ```
+       - request
+       ```
+       {
+         username: "xxx"
+       }
+       ```
+       - response `[JSON]`
+       ```
+       {
+         code: "ok"/"error"
+       }
+       ```
 
    - api: /fn/user/register
 
     - 注册表单提交，api验证并跳转页面至用户中心（url: /user）
     
-    -request `[POST]`
-    ```
-    {
-        userName: "xxx",
-        password: "xxx",
-        passConfirm: "xxx"
-    }
-    ```
+        - request `[POST]`
+        ```
+        {
+            userName: "xxx",
+            password: "xxx",
+            passConfirm: "xxx"
+        }
+        ```
 
 #### 用户中心页面
 

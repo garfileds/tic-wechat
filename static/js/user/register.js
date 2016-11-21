@@ -3,27 +3,27 @@
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlValidUserName = '/fn/valid/userName';
+const urlValidUserName = '/fn/valid/username';
 
 let formRegister = new Vue({
 	el: '#formRegister',
 	data: {
-		userName: '',
+		username: '',
 		password: '',
         passConfirm: '',
-        userNameError: false,
+        usernameError: false,
         passError: false
 	},
     computed: {
         errorCount: function() {
             let count = 0;
-            if (this.userNameError) count++;
+            if (this.usernameError) count++;
             if (this.passError) count++;
             return count;
         },
         errorMsg: function() {
             let msg = '';
-            if (this.userNameError) {
+            if (this.usernameError) {
                 msg = '抱歉，用户名已被注册';
             } else if (this.passError) {
                 msg = '两次密码输入不一致';
@@ -31,7 +31,7 @@ let formRegister = new Vue({
             return msg;
         },
         hasError: function() {
-            return this.userNameError || this.passError;
+            return this.usernameError || this.passError;
         }
     },
 
@@ -40,18 +40,19 @@ let formRegister = new Vue({
             fetch(urlValidUserName, {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                  userName: formRegister.userName
+                  username: formRegister.username
                 })
             })
             .then(response => response.json())
             .then(function(data) {
                 if (data.code == 'ok') {
-                    formRegister.userNameError = false;
+                    formRegister.usernameError = false;
                 } else {
-                    formRegister.userNameError = true;
+                    formRegister.usernameError = true;
                 }
             })
             .catch(function(error) {
@@ -71,16 +72,16 @@ let formRegister = new Vue({
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  userName: formRegister.userName
+                  username: formRegister.username
                 })
             })
             .then(response => response.json())
             .then(function(data) {
                 if (data.code == 'ok') {
-                    formRegister.userNameError = false;
+                    formRegister.usernameError = false;
                     formRegister.validPass();
                 } else {
-                    formRegister.userNameError = true;
+                    formRegister.usernameError = true;
                 }
 
                 if (!formRegister.hasError) {

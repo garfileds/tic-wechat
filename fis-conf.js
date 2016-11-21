@@ -4,7 +4,7 @@ fis.require('jello')(fis);
 fis
   // 排除指定目录
   .set('project.files', ['**', '.**', '.**/**'])
-  .set('project.ignore', ['.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+  .set('project.ignore', ['tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
   .set('project.fileType.text', 'es');
 
 
@@ -40,6 +40,24 @@ fis.match('/static/scss/**.scss', {
   rExt: '.css',
   parser: fis.plugin('node-sass')
 });
+
+fis.media('tic')
+  /*.match('**', {
+      release: 'D:/freetime/xdtic-be/src/main/webapp/static/$0'
+    })
+  .match('/static/(**)', {
+      release: 'D:/freetime/xdtic-be/src/main/webapp/static/$1'
+    })
+  .match('/page/**.{jsp,vm,html}', {
+      release: 'D:/freetime/xdtic-be/src/main/webapp/WEB-INF/views/$0'
+    })
+  .match('{map.json,${namespace}-map.json}', {
+      release: 'D:/freetime/xdtic-be/src/main/webapp/WEB-INF/config/$0'
+    })*/
+  .match('**.{scss, css, js, png, jpeg, jpg}', {
+    url: '/xdtic$0'
+  });
+
 
 
 /****************prod环境*****************/

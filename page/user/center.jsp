@@ -10,7 +10,7 @@
 					<div class="tic-avatar">
 						<div class="avatar">
 							<img src="/static/images/avatar.png" alt="西电腾讯俱乐部">
-							<p><c:out value="${user.userName}" /></p>
+							<p><c:out value="${user.username}" /></p>
 						</div>
 						<div class="bg">
 							<img src="/static/images/avatar-bg.png" alt="">
@@ -23,11 +23,11 @@
 						<c:if test="${user.hasMsg}">
 							<c:set var="notice" value="notice" />
 						</c:if>
-						<a href="/user/msg?userid=<c:out value="${user.userid}" />" v-tap class="grid <c:out value="${notice}" />">
+						<a href="/user/msg?userid=<c:out value="${user.id}" />" v-tap class="grid <c:out value="${notice}" />">
 							<img src="/static/images/sys-msg.png" alt="系统消息">
 							<p>系统消息</p>
 						</a>
-						<a class="grid" href="/user/info?userid=<c:out value="${user.userid}" />" v-tap>
+						<a class="grid" href="/user/profile?userid=<c:out value="${user.id}" />" v-tap>
 							<img src="/static/images/profile.png" alt="个人信息">
 							<p>个人信息</p>
 						</a>
