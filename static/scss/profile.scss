@@ -1,3 +1,5 @@
+@import '_input'; 
+
 /*reset we-ui-cell*/
 .weui-cell {
 	display: inline-flex;
@@ -16,6 +18,7 @@
 	.tic-tr-two {
 		display: flex;
 		flex-flow: row nowrap;
+		align-items: center;
 
 		.tic-td-label {
 			flex: 0 0 30%;
@@ -46,30 +49,4 @@
 		font-size: .8rem;
 		padding: .8rem 0;
 	}
-}
-
-.tic-header-three {
-	border-bottom: solid 1px #ccc4c4;
-	background: #f8f8f8;
-
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	align-items: center;
-
-	& > span {
-		flex: 0 1 10%;
-
-		padding: .8rem .5rem;
-		box-sizing: border-box;
-	}
-
-	& > h2 {
-		flex: 0 0 80%;
-		text-align: center;
-		box-sizing: border-box;
-
-		padding: .8rem 0;
-	}
-
 }

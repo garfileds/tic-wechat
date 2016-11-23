@@ -1,0 +1,14 @@
+{
+    	"user": {
+    		"id": "u001",
+    		"username": "adoug",
+    		"email": "942434869@qq.com",
+    		"realName": "张骥",
+			"sex": "boy",
+			"major": "软件工程",
+			"phone": "15029679086",
+			"studentNo": "1603121451",
+			"ability": "ps,c++,ui设计",
+			"projectDesc": "人脸识别系统"
+    	}
+    }

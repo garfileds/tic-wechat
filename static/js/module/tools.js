@@ -54,4 +54,23 @@ function serialize(form) {
     return parts.join("&");
 }
 
-module.exports = serialize;
+function SaferHTML(templateData) {
+  var s = templateData[0];
+  for (var i = 1; i < arguments.length; i++) {
+    var arg = String(arguments[i]);
+
+    // 转义占位符中的特殊字符。
+    s += arg.replace(/&/g, "&")
+            .replace(/</g, "<")
+            .replace(/</g, ">");
+
+    // 不转义模板中的特殊字符。
+    s += templateData[i];
+  }
+  return s;
+}
+
+module.exports = {
+    serialize: serialize,
+    SaferHTML: SaferHTML
+};
