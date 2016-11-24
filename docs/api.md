@@ -96,13 +96,14 @@
     	"user": {
     		"id": "u001",
     		"username": "adoug",
-    		"realName": "张骥",
-			"sex": "boy"/"girl",
-			"major": "软件工程",
-			"phone": "15029679086",
-			"studentNo": "1603121451",
-			"ability": "ps,c++,ui设计",
-			"projectDesc": "人脸识别系统"
+    		"email": "942434869@qq.com",
+    		"name": "张骥",
+  			"sex": "boy"/"girl",
+  			"profe": "软件工程",
+  			"phone": "15029679086",
+  			"stunum": "1603121451",
+  			"profile": "ps,c++,ui设计",
+  			"pexperice": "人脸识别系统"
     	}
     }
    ```
@@ -111,17 +112,17 @@
    - request `[FORM]`
    ```
    {
-        "user": {
-    		"id": "u001",
-    		"username": "adoug",
-    		"email": "9424348692@qq.com",
-    		"realName": "张骥",
-			"sex": "boy"/"girl",
-			"major": "软件工程",
-			"phone": "15029679086",
-			"studentNo": "1603121451",
-			"ability": "ps,c++,ui设计",
-			"projectDesc": "人脸识别系统"
+      "user": {
+      	"id": "u001",
+      	"username": "adoug",
+      	"email": "942434869@qq.com",
+      	"name": "张骥",
+  			"sex": "boy"/"girl",
+  			"profe": "软件工程",
+  			"phone": "15029679086",
+  			"stunum": "1603121451",
+  			"profile": "ps,c++,ui设计",
+  			"pexperice": "人脸识别系统"
     	}
    }
    ```
@@ -129,7 +130,7 @@
    - response `[JSON]`
    ```
    {
-    code: "ok"/"error"
+        code: "ok"/"error"
    }
    ```
    
@@ -156,50 +157,50 @@
     	
         "msgs": [{
 		"type": "join"/"post"/"pass", /*分三种类型*/
-		"projectName": "时间典当铺APP",
-		"projectCreator": "wali",
+		"proname": "时间典当铺APP",
+		"username": "wali",
 		"date": "10分钟前",
 		"id": "m001"
 	}, {
 		"type": "post",
-		"projectName": "狗儿养成计划",
-		"projectCreator": "adoug",
+		"proname": "狗儿养成计划",
+		"username": "adoug",
 		"date": "1天前",
 		"id": "m001"
 	}, {
 		"type": "pass",
-		"projectName": "狗儿养成计划",
-		"projectCreator": "adoug",
+		"proname": "狗儿养成计划",
+		"username": "adoug",
 		"date": "1小时前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
 		"id": "m001"
 	}]

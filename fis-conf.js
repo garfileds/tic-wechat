@@ -56,6 +56,9 @@ fis.media('tic')
     })*/
   .match('**.{scss, css, js, png, jpeg, jpg}', {
     url: '/xdtic$0'
+  })
+  .match('node_modules/**.{js, es}', {
+    url: '/xdtic/static$0'
   });
 
 

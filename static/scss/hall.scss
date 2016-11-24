@@ -1,0 +1,68 @@
+/*reset weui*/
+
+$blue: #088fd9;
+$secondary: #999999;
+
+.weui-media-box_appmsg {
+	align-items: flex-start;
+}
+
+.weui-panel__bd {
+	.weui-media-box__title {
+		font-size: 1.25rem;
+		color: $blue;
+
+		.tic-collect {
+			float: right;
+		}
+	}
+
+	.weui-media-box__desc {
+		color: #000000;
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	.tic-media-box__label {
+		font-size: .8rem;
+		color: $secondary;
+		padding-bottom: .4rem;
+
+		& > span {
+			padding-right: .525rem
+		}
+	}
+
+	.tic-media-box__footer {
+		text-align: right;
+		padding-top: .525rem;
+
+		.tic-strong {
+			color: $blue;
+			padding-right: .525rem;
+		}
+
+		.tic-secondary {
+			font-size: .8rem;
+			color: $secondary;
+			padding-right: .525rem;
+		}
+	}
+}
+
+.tic-hot::after {
+	content: "HOT";
+    font-size: 1rem;
+    vertical-align: top;
+    color: #ff3333;
+    font-weight: 600;
+    padding-left: .4rem;
+}
+
+.tic-header-hall {
+	text-align: center;
+
+	& > img {
+		padding-top: .4rem;
+	}
+}
