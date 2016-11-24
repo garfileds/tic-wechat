@@ -1,57 +1,57 @@
 {
-	"msgs": [{
-		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "wali",
-		"date": "10分钟前",
-		"id": "m001"
+        "pageNum": 1,  /*表示第几页*/
+    	"size": 8,
+    	"hasMore": true, /*后面是否还有消息*/
+    	
+        "msgs": [{
+		"type": "join"/"post"/"pass", /*分三种类型*/
+		"proname": "时间典当铺APP",
+		"username": "wali",
+		"existDate": "10分钟前",
+		"mid": "m001"
 	}, {
 		"type": "post",
-		"projectName": "狗儿养成计划",
-		"projectCreator": "adoug",
-		"date": "1天前",
-		"id": "m001"
+		"proname": "狗儿养成计划",
+		"username": "adoug",
+		"existDate": "1天前",
+		"mid": "m001"
 	}, {
 		"type": "pass",
-		"projectName": "狗儿养成计划",
-		"projectCreator": "adoug",
-		"date": "1小时前",
+		"proname": "狗儿养成计划",
+		"username": "adoug",
+		"existDate": "1小时前",
 		"id": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
-		"date": "10分钟前",
-		"id": "m001"
+		"proname": "时间典当铺APP",
+		"username": "adoug",
+		"existDate": "10分钟前",
+		"mid": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
+		"proname": "时间典当铺APP",
+		"username": "adoug",
 		"date": "10分钟前",
-		"id": "m001"
+		"mid": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
-		"date": "10分钟前",
-		"id": "m001"
+		"proname": "时间典当铺APP",
+		"username": "adoug",
+		"existDate": "10分钟前",
+		"mid": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
-		"date": "10分钟前",
-		"id": "m001"
+		"proname": "时间典当铺APP",
+		"username": "adoug",
+		"existDate": "10分钟前",
+		"mid": "m001"
 	}, {
 		"type": "join",
-		"projectName": "时间典当铺APP",
-		"projectCreator": "adoug",
-		"date": "10分钟前",
-		"id": "m001"
-	}],
-
-	"pageNum": 2,
-	"size": 8,
-	"hasMore": true
+		"proname": "时间典当铺APP",
+		"username": "adoug",
+		"existDate": "10分钟前",
+		"mid": "m001"
+	}]
 }
 
 <%

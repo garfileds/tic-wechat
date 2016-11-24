@@ -16,13 +16,13 @@ const urlSearchProject = '/fn/get/project';
 const urlSearchHotProject = '/fn/get/hotProject';
 
 const urlCollect = '/fn/project/collect';
-const urlUnCollect = '/fn/project/uncollect'
+const urlUnCollect = '/fn/project/uncollect';
 
 //组件间通信，事件代理
 let bus = new Vue();
 
 //searchBar接收请求操作后通知projectBox
-bus.$on('initProjectBox', function(keyWords) {
+bus.$on('loadProject', function(keyWords) {
 	projectBox.pageNum = 1;
 	projectBox.keyWords = keyWords;
 
@@ -33,21 +33,16 @@ bus.$on('initProjectBox', function(keyWords) {
 Vue.component('tic-project', {
 	template: '#tic-project',
 
-	props: ['projectInit', 'index', 'userId'],
-
-	data: {
-		project: function() {
-			return this.projectInit;
-		}
-	},
+	props: ['project', 'index', 'userid'],
 
 	methods: {
 		collect: function(params) {
 			//假装收藏成功，这样给用户的反馈快一点，收藏失败再回滚
 			this.$emit('collect', params.projectIndex);
 			// this.project.isCollected = true;
+			let self = this;
 
-			let url = `${urlCollect}?userid=${params.userId}&projectid=${this.project.proId}`;
+			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.proId}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {
@@ -57,9 +52,9 @@ Vue.component('tic-project', {
 			.then(response => response.json())
 			.then(function(data) {
 				if (data.code === 'error') {
-					this.$emit('uncollect', params.projectIndex);
+					self.$emit('uncollect', params.projectIndex);
 					// this.project.isCollected = false;
-					this.$emit('collectFail');
+					self.$emit('collectFail');
 				}
 			});
 		},
@@ -69,7 +64,9 @@ Vue.component('tic-project', {
 			this.$emit('uncollect', params.projectIndex);
 			// this.project.isCollected = false;
 
-			let url = `${urlUnCollect}?userid=${params.userId}&projectid=${this.project.proId}`;
+			let self = this;
+
+			let url = `${urlUnCollect}?userid=${params.userid}&proId=${this.project.proId}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {
@@ -79,9 +76,9 @@ Vue.component('tic-project', {
 			.then(response => response.json())
 			.then(function(data) {
 				if (data.code === 'error') {
-					this.$emit('collect', params.projectIndex);
+					self.$emit('collect', params.projectIndex);
 					// this.project.isCollected = false;
-					this.$emit('collectFail');
+					self.$emit('collectFail');
 				}
 			});
 		}
@@ -105,7 +102,14 @@ let projectBox = new Vue({
 		pageSize: 8,
 		hotSize: 2,
 
-		keyWords: ''
+		keyWords: '',
+
+		user: userInfo
+	},
+
+	beforeMount: function() {
+		this.loadHotProject();
+		this.loadProject();
 	},
 
 	methods: {
@@ -148,10 +152,6 @@ let searchBar = new Vue({
 		isFocusing: false
 	},
 
-	beforeMount: function() {
-		this.search();
-	},
-
 	methods: {
 		showInput: function() {
 			this.isFocusing = true;
@@ -178,7 +178,7 @@ let searchBar = new Vue({
 
 		search: function() {
 			//通知projectBox
-			bus.$emit('initProjectBox', this.keyWords);
+			bus.$emit('loadProject', this.keyWords);
 		}
 	}
 });
@@ -188,14 +188,12 @@ let searchBar = new Vue({
  * @fileOverview 加载普通project列表
  * @param        {[int]}   pageNum [页码]
  */
-function loadProject(pageNum) {
+function loadProject() {
 	if (this.noMore) {
 		return;
 	}
 
-	pageNum = pageNum || this.pageNum
-
-	let url = `${urlSearchProject}?pageNum=${pageNum}&size=${this.pageSize}&keyWords=${this.keyWords}`;
+	let url = `${urlSearchProject}?pageNum=${this.pageNum}&pageSize=${this.pageSize}&keyWords=${this.keyWords}&userid=${this.user.id}`;
 
 	this.busy = true;
 	this.isLoading = true;
@@ -210,7 +208,12 @@ function loadProject(pageNum) {
 	.then(response => response.json())
 	.then(function(data) {
 		self.isLoading = false;
-		self.projects = self.projects.concat(data.projects);
+
+		if (self.pageNum === 1) {
+			self.projects = data.projects;
+		} else {
+			self.projects = self.projects.concat(data.projects);
+		}
 
 		if (data.hasMore === false) {
 			self.noMore = true;
@@ -226,7 +229,7 @@ function loadProject(pageNum) {
  * @fileOverview 加载Hot-project列表
  */
 function loadHotProject() {
-	let url = `${urlSearchHotProject}?hotSize=${this.hotSize}&keyWords=${this.keyWords}`;
+	let url = `${urlSearchHotProject}?hotSize=${this.hotSize}&keyWords=${this.keyWords}&userid=${this.user.id}`;
 
 	self = this;
 
@@ -238,7 +241,10 @@ function loadHotProject() {
 	})
 	.then(response => response.json())
 	.then(function(data) {
-		self.hotProjects.splice(0, 2);
-		self.hotProjects = self.hotProjects.concat(data.projects);
+		data.projects.map((el, index) => {
+			el.isHot = true;
+			return el;
+		});
+		self.hotProjects = data.projects;
 	});
 }

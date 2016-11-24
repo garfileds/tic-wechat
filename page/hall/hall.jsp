@@ -36,24 +36,24 @@
 			<div class="tic-project-box" id="projectBox" v-infinite-scroll="loadProject" infinite-scroll-disabled="busy" infinite-scroll-distance="10" infinite-scroll-immediate-check="checkImmediately">
 				<div id="hotProjectBox">
 					<tic-project
-					 v-for="(project, index) in hotProjects"
-					 projectInit="project"
-					 index="index"
-					 userId="<c:out value='${user.id}'/>" 
-					 @collect="collectHot",
-					 @uncollect="uncollectHot",
-					 @collectFail="openDialog" />
+					 v-for="(hotProject, index) in hotProjects"
+					 v-bind:project="hotProject"
+					 v-bind:index="index"
+					 userid="<c:out value='${user.id}' />"
+					 @collect="collectHot"
+					 @uncollect="uncollectHot"
+					 @collectFail="openDialog">
 					</tic-project>
 				</div>
 				<div id="normalProjectBox">
 					<tic-project
 					 v-for="(project, index) in projects"
-					 projectInit="project"
-					 index="index"
-					 userId="<c:out value='${user.id}' />"
+					 :project="project"
+					 :index="index"
+					 userid="<c:out value='${user.id}' />"
 					 @collect="collect"
 					 @uncollect="uncollect"
-					 @collectFail="openDialog" />
+					 @collectFail="openDialog">
 					</tic-project>
 				</div>
 				<div v-show="collectIsFail">
@@ -84,6 +84,14 @@
 		<fis:require id="/static/scss/hall.scss" />
 	</fis:block>
 
+	<fis:block name="jsPre">
+		<script type="text/javascript">
+			var userInfo = {
+				id: '<c:out value="${user.id}" />'
+			};
+		</script>
+	</fis:block>
+
 	<fis:block name="js">
 		<fis:parent />
 		<fis:require id="/static/libs/mod.js" />
@@ -103,10 +111,10 @@
 				            	</span>
 				            	<span class="tic-collect">
 				                	<img src="/static/images/hall/uncollect.png" alt="收藏"
-				                	 v-tap="{methods: collect, projectIndex: index, userId: userId}"
+				                	 v-tap="{methods: collect, projectIndex: index, userid: userid}"
 				                	 v-show="!project.isCollected" />
 				                	<img src="/static/images/hall/collect.png" alt="取消收藏"
-				                	 v-tap="{methods: uncollect, projectIndex: index, userId: userId}"
+				                	 v-tap="{methods: uncollect, projectIndex: index, userid: userid}"
 				                	 v-show="project.isCollected" />
 			                	</span>
 				            </h4>
