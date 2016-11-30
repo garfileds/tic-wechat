@@ -1,3 +1,38 @@
+### 我的项目
+
+#### 发布项目页面
+
+- url: /xdtic/myProject/postProject
+- jsp: /page/myProject/postProject
+- jsp页面所需变量
+   ```
+   {
+        "user": {
+            "id": "u001"
+        }
+   }
+   ```
+- api: /xdtic/fn/project/post
+
+   - 说明：发布新项目
+   - request `[POST]` `[Form]`
+   ```
+   {
+        tag: "安卓&硬件"
+        title: "我的天"
+        pdesc: 记录生活中的新鲜事
+        prowant: "前端 2名"
+        concat: "电话：15029679086",
+        uid: "u001"
+   }
+   ```
+   - response  `[JSON]`
+   ```
+   {
+        code: "ok"/"error"
+   }
+   ```
+
 ### 项目大厅
 
 #### 项目大厅页面
@@ -296,6 +331,15 @@
    - url：/xdtic/user/msgs
    - jsp: /page/user/msgs
    
+   - jsp页面所需变量
+   ```
+   {
+        "user": {
+            "id": "u001"
+        }
+   }
+   ```
+   
    - api: /xdtic/fn/get/msg
    - 说明：获取系统消息列表
    - request `[GET]`
@@ -310,56 +354,14 @@
    {
         "pageNum": 1,  /*表示第几页*/
     	"size": 8,
-    	"hasMore": true, /*后面是否还有消息*/
+    	"hasMore": false, /*后面是否还有消息*/
     	
         "msgs": [{
 		"type": "join"/"post"/"pass", /*分三种类型*/
-		"proname": "时间典当铺APP",
-		"username": "wali",
-		"existDate": "10分钟前",
-		"mid": "m001"
-	}, {
-		"type": "post",
-		"proname": "狗儿养成计划",
-		"username": "adoug",
-		"existDate": "1天前",
-		"mid": "m001"
-	}, {
-		"type": "pass",
-		"proname": "狗儿养成计划",
-		"username": "adoug",
-		"existDate": "1小时前",
-		"id": "m001"
-	}, {
-		"type": "join",
-		"proname": "时间典当铺APP",
-		"username": "adoug",
-		"existDate": "10分钟前",
-		"mid": "m001"
-	}, {
-		"type": "join",
-		"proname": "时间典当铺APP",
-		"username": "adoug",
-		"date": "10分钟前",
-		"mid": "m001"
-	}, {
-		"type": "join",
-		"proname": "时间典当铺APP",
-		"username": "adoug",
-		"existDate": "10分钟前",
-		"mid": "m001"
-	}, {
-		"type": "join",
-		"proname": "时间典当铺APP",
-		"username": "adoug",
-		"existDate": "10分钟前",
-		"mid": "m001"
-	}, {
-		"type": "join",
-		"proname": "时间典当铺APP",
-		"username": "adoug",
-		"existDate": "10分钟前",
-		"mid": "m001"
+		"uid": 1,
+		"mid": 1,
+		"massage": "你已成功报名BU Qun的5分钟撩妹app，请等待发布者的联系，祝你顺利~",
+		"existDate": "10分钟前"
 	}]
    }
    ```

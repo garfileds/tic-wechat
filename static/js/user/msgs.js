@@ -13,7 +13,7 @@ require('whatwg-fetch');
 
 const urlLoadMoreMsg = '/fn/get/msg';
 
-let pageNum = 1;
+let pageNum = 0;
 const pageSize = 8;
 
 Vue.component('tic-msg', {
@@ -28,7 +28,8 @@ let msgBox = new Vue({
 		busy: false,
 		noMore: false,
 		isLoading: false,
-		checkImmediately: false
+		checkImmediately: false,
+		user: userInfo
 	},
 
 	beforeMount: function() {
@@ -47,7 +48,7 @@ function loadMore() {
 		return;
 	}
 
-	let url = `${urlLoadMoreMsg}?pageNum=${pageNum}&size=${pageSize}`;
+	let url = `${urlLoadMoreMsg}?uid=${this.user.id}&pageNum=${pageNum}&size=${pageSize}`;
 
 	this.busy = true;
 	this.isLoading = true;
