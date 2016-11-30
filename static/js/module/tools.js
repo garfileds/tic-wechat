@@ -71,6 +71,6 @@ function SaferHTML(templateData) {
 }
 
 module.exports = {
-    serialize: serialize,
+    formSerialize: serialize,
     SaferHTML: SaferHTML
 };
