@@ -1,0 +1,98 @@
+/*reset weui*/
+
+$blue: #088fd9;
+$secondary: #999999;
+
+.weui-media-box_appmsg {
+	align-items: flex-start;
+}
+
+.weui-panel__bd {
+	.weui-media-box__title {
+		font-size: 1.25rem;
+		color: $blue;
+
+		.tic-collect {
+			float: right;
+		}
+	}
+
+	.weui-media-box__desc {
+		color: #000000;
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	.tic-media-box__label {
+		font-size: .8rem;
+		color: $secondary;
+		padding-bottom: .4rem;
+
+		& > span {
+			padding-right: .525rem
+		}
+	}
+
+	.tic-media-box__footer {
+		text-align: right;
+		padding-top: .525rem;
+
+		.tic-strong {
+			color: $blue;
+			padding-right: .525rem;
+		}
+
+		.tic-secondary {
+			font-size: .8rem;
+			color: $secondary;
+			padding-right: .525rem;
+		}
+	}
+}
+
+/*reset*/
+.tic-header-three {
+	& > h2 {
+		flex-basis: 40%;
+	}
+
+	& > span, & > a {
+		flex-basis: 30%;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}
+
+
+.tic-nav-header {
+	flex-flow: row nowrap;
+	display: flex;
+	justify-content: sapce-betwwen;
+	align-items: center;
+	background: #f3f3f3;
+
+	& > a {
+		flex: 1 1 33.333%;
+
+		display: inline-block;
+		padding: .425rem .5rem;
+		border-right: solid 1px #ccc4c4;
+		text-align: center;
+	}
+
+	& > a:last-child {
+		border: none;
+	}
+}
+
+.tic-nav-current {
+	color: #088fd9;
+	font-weight: 700;
+}
+
+.tic-float-left {
+	float: left;
+	padding-top: .3rem;
+}

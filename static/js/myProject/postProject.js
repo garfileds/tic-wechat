@@ -99,7 +99,7 @@ let appPostProject = new Vue({
 			.then(function(data) {
 				if (data.code === 'ok') {
 					self.postIsSucc = true;
-					window.location.href = '/myProject/myPost';
+					window.location.href = '/myProject?content=myPost';
 				} else {
 					self.postIsFail = true;
 				}

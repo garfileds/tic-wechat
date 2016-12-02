@@ -6,28 +6,34 @@
 
 'use strict';
 
-const infiniteScroll = require('vue-infinite-scroll').infiniteScroll;
+const infiniteScroll = require('vue-infinite-scroll');
+Vue.use(infiniteScroll);
 
 const Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlSearchProject = '/fn/get/project';
+const tools = require('../module/tools');
 
-const urlSearchHotProject = '/fn/get/hotProject';
+const urlCollect = `${urlPrefix}/fn/project/collect`;
+const urlUnCollect = `${urlPrefix}/fn/project/uncollect`;
 
-const urlCollect = '/fn/project/collect';
-const urlUnCollect = '/fn/project/uncollect';
+const urlLoadProjectMap = {
+	'post': `${urlPrefix}/fn/get/project/myPost`,
+	'join': `${urlPrefix}/fn/get/project/myJoin`,
+	'collect': `${urlPrefix}/fn/get/project/myCollect`
+};
+
+let myProjectType = tools.getParams(window.location.href).type;
+let urlLoadProject = urlLoadProjectMap[myProjectType];
 
 //组件间通信，事件代理
 let bus = new Vue();
 
 //searchBar接收请求操作后通知projectBox
-bus.$on('loadProject', function(keyWords) {
-	projectBox.pageNum = 1;
-	projectBox.keyWords = keyWords;
-
+bus.$on('loadProject', function(type) {
+	projectBox.pageNum = 0;
+	projectBox.urlLoadProject = urlLoadProjectMap[type];
 	projectBox.projects.splice(0, projectBox.projects.length);
-	projectBox.hotProjects.splice(0, projectBox.hotProjects.length);
 
 	projectBox.noMore = false;
 	projectBox.busy = false;
@@ -37,7 +43,6 @@ bus.$on('loadProject', function(keyWords) {
 	projectBox.collectIsFail = false;
 
 	projectBox.loadProject();
-	projectBox.loadHotProject();
 });
 
 Vue.component('tic-project', {
@@ -47,9 +52,8 @@ Vue.component('tic-project', {
 
 	methods: {
 		collect: function(params) {
-			//假装收藏成功，这样给用户的反馈快一点，收藏失败再回滚
+			//假装收藏成功，这样给用户的反馈快一点，失败再回滚
 			this.$emit('collect', params.projectIndex);
-			// this.project.isCollected = true;
 			let self = this;
 
 			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.proId}`;
@@ -63,16 +67,14 @@ Vue.component('tic-project', {
 			.then(function(data) {
 				if (data.code === 'error') {
 					self.$emit('uncollect', params.projectIndex);
-					// this.project.isCollected = false;
 					self.$emit('collectFail');
 				}
 			});
 		},
 
 		uncollect: function(params) {
-			//假装收藏成功，这样给用户的反馈快一点，收藏失败再回滚
+			//假装取消收藏，这样给用户的反馈快一点，失败再回滚
 			this.$emit('uncollect', params.projectIndex);
-			// this.project.isCollected = false;
 
 			let self = this;
 
@@ -87,10 +89,18 @@ Vue.component('tic-project', {
 			.then(function(data) {
 				if (data.code === 'error') {
 					self.$emit('collect', params.projectIndex);
-					// this.project.isCollected = false;
 					self.$emit('collectFail');
 				}
 			});
+		}
+	},
+
+	computed: {
+		projectStatu: function() {
+			if(this.project.statu) {
+				return this.project.statu === 'pass' ? '审核已通过~' : '审核中...';
+			}
+			return '';
 		}
 	}
 });
@@ -99,7 +109,6 @@ let projectBox = new Vue({
 	el: '#appBody',
 	data: {
 		projects: [],
-		hotProjects: [],
 
 		busy: false,
 		noMore: false,
@@ -110,36 +119,25 @@ let projectBox = new Vue({
 
 		pageNum: 0,
 		pageSize: 5,
-		hotSize: 2,
 
-		keyWords: '',
+		urlLoadProject: urlLoadProject,
 
 		user: userInfo
 	},
 
 	beforeMount: function() {
-		this.loadHotProject();
 		this.loadProject();
 	},
 
 	methods: {
 		loadProject: loadProject,
-		loadHotProject: loadHotProject,
 
 		collect: function(index) {
 			this.projects[index].isCollected = true;
 		},
 
-		collectHot: function(index) {
-			this.hotProjects[index].isCollected = true;
-		},
-
 		uncollect: function(index) {
 			this.projects[index].isCollected = false;
-		},
-
-		uncollectHot: function(index) {
-			this.hotProjects[index].isCollected = false;
 		},
 
 		closeDialog: function() {
@@ -149,46 +147,23 @@ let projectBox = new Vue({
 		openDialog: function() {
 			this.collectIsFail = true;
 		}
-	},
-
-	directives: {infiniteScroll}
+	}
 });
 
-let searchBar = new Vue({
-	el: '#searchBar',
-	data: {
-		keyWords: '',
+let myProjectNav = new Vue({
+	el: '#myProjectNav',
 
-		isFocusing: false
+	data: {
+		currentLink: myProjectType
 	},
 
 	methods: {
-		showInput: function() {
-			this.isFocusing = true;
+		switchType: function(params) {
+			let event = params.event,
+				target = event.target;
 
-			this.$nextTick(function() {
-				this.$el.querySelector('#searchInput').focus();
-			});
-		},
-
-		inputBlur: function() {
-			if (!this.keyWords.length) {
-				this.isFocusing = false;
-			}
-		},
-
-		clearInput: function() {
-			this.keyWords = '';
-		},
-
-		cancelSearch: function() {
-			this.keyWords = '';
-			this.isFocusing = false;
-		},
-
-		search: function() {
-			//通知projectBox
-			bus.$emit('loadProject', this.keyWords);
+			this.currentLink = target.dataset.type;
+			bus.$emit('loadProject', target.dataset.type);
 		}
 	}
 });
@@ -203,7 +178,7 @@ function loadProject() {
 		return;
 	}
 
-	let url = `${urlSearchProject}?pageNum=${this.pageNum}&pageSize=${this.pageSize}&keyWords=${this.keyWords}&userid=${this.user.id}`;
+	let url = `${this.urlLoadProject}?pageNum=${this.pageNum}&pageSize=${this.pageSize}&uid=${this.user.id}`;
 
 	this.busy = true;
 	this.isLoading = true;
@@ -231,30 +206,5 @@ function loadProject() {
 
 		self.pageNum++;
 		self.busy = false;
-	});
-}
-
-/**
- * [loadHotProject description]
- * @fileOverview 加载Hot-project列表
- */
-function loadHotProject() {
-	let url = `${urlSearchHotProject}?hotSize=${this.hotSize}&keyWords=${this.keyWords}&userid=${this.user.id}`;
-
-	self = this;
-
-	fetch(url, {
-		method: 'GET',
-		headers: {
-			'Accept': 'application/json'
-		}
-	})
-	.then(response => response.json())
-	.then(function(data) {
-		data.projects.map((el, index) => {
-			el.isHot = true;
-			return el;
-		});
-		self.hotProjects = data.projects;
 	});
 }

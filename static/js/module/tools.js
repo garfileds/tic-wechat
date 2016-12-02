@@ -1,3 +1,9 @@
+/**
+ * @fileOverview tools
+ * @Author       adoug
+ * @DateTime     2016-11-24
+ */
+
 function serialize(form) {
     if (typeof form === 'string') {
         form = document.querySelector(form);
@@ -70,7 +76,27 @@ function SaferHTML(templateData) {
   return s;
 }
 
+/**
+ * @fileOverview 获取url中GET类型的参数
+ * @param        {[String]}   url 
+ * @return       {[Object]}   params
+ */
+function getParams(url) {
+    let urlQuery = url.split('?')[1];
+    let params = {};
+
+    let parts = urlQuery.split('&');
+    for(let i = 0, len = parts.length; i < len; i++) {
+        let part = parts[i].split('=');
+
+        params[part[0]] = part[1];
+    }
+
+    return params;
+}
+
 module.exports = {
     formSerialize: serialize,
-    SaferHTML: SaferHTML
+    SaferHTML: SaferHTML,
+    getParams: getParams
 };
