@@ -11,12 +11,12 @@ const infiniteScroll = require('vue-infinite-scroll').infiniteScroll;
 const Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlSearchProject = '/fn/get/project';
+const urlSearchProject = `${urlPrefix}/fn/get/project`;
 
-const urlSearchHotProject = '/fn/get/hotProject';
+const urlSearchHotProject = `${urlPrefix}/fn/get/hotProject`;
 
-const urlCollect = '/fn/project/collect';
-const urlUnCollect = '/fn/project/uncollect';
+const urlCollect = `${urlPrefix}/fn/project/collect`;
+const urlUnCollect = `${urlPrefix}/fn/project/uncollect`;
 
 //组件间通信，事件代理
 let bus = new Vue();

@@ -11,7 +11,7 @@ require('whatwg-fetch');
 
 const tools = require('../module/tools');
 
-const urlPostProject = '/fn/project/post';
+const urlPostProject = `${urlPrefix}/fn/project/post`;
 
 Vue.component('tic-tag-box', {
 	template: '#tic-tag',

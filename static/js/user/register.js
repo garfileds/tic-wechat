@@ -3,7 +3,7 @@
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlValidUserName = '/fn/valid/username';
+const urlValidUserName = `${urlPrefix}/fn/valid/username`;
 
 let formRegister = new Vue({
 	el: '#formRegister',

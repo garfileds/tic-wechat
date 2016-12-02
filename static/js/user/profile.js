@@ -11,7 +11,7 @@ require('whatwg-fetch');
 
 let formSerialize = require('../module/formSerialize');
 
-const urlUpdateProfile = '/fn/update/profile';
+const urlUpdateProfile = `${urlPrefix}/fn/update/profile`;
 
 let appProfile = new Vue({
 	el: '#appProfile',

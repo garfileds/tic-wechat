@@ -53,7 +53,7 @@
 						<img v-else src="/static/images/msg-dialog.png" alt="">
 					</div>
 					<div class="tic-msg-right">
-						<a :href="'/user/msg?id=' + msg.mid" class="tic-msg-link" v-tap>
+						<a :href="'<c:url value='/user/msg' />?id=' + msg.mid" class="tic-msg-link" v-tap>
 							<p>
 								{{msg.massage}}
 							</p>

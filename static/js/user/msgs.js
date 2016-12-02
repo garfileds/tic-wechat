@@ -11,7 +11,7 @@ const infiniteScroll = require('vue-infinite-scroll').infiniteScroll;
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlLoadMoreMsg = '/fn/get/msg';
+const urlLoadMoreMsg = `${urlPrefix}/fn/get/msg`;
 
 let pageNum = 0;
 const pageSize = 8;
