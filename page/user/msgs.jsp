@@ -6,7 +6,9 @@
 	<fis:block name="body">
 		<header>
 			<div class="tic-header-three">
-				<span v-tap="{methods:navBack}">&lt;</span>
+				<a href="javascript:window.history.go(-1);" v-tap class="tic-header-three-aside">
+        			<img src="/static/images/arrow_prev.png" alt="后退">
+    			</a>
 				<h2>系统信息</h2>
 				<span></span>
 			</div>
@@ -49,8 +51,8 @@
 			<div class="tic-msg">
 				<div class="tic-msg-two">
 					<div class="tic-msg-left">
-						<img v-if="msg.type === 'join'" src="/static/images/msg-dialog-red.png" alt="">
-						<img v-else src="/static/images/msg-dialog.png" alt="">
+						<img v-if="msg.type === 'join'" src="<c:url value='/static/images/msg-dialog-red.png' />" alt="">
+						<img v-else src="<c:url value='/static/images/msg-dialog.png' />" alt="">
 					</div>
 					<div class="tic-msg-right">
 						<a :href="'<c:url value='/user/msg' />?id=' + msg.mid" class="tic-msg-link" v-tap>

@@ -89,7 +89,7 @@
 				<div class="weui-panel__bd">
 				    <a :href="projectDetailLink +'?proId=' + project.proId" class="weui-media-box weui-media-box_appmsg">
 			         <div class="weui-media-box__hd">
-			             <img class="weui-media-box__thumb" src="/static/images/avatar.png" alt="">
+			             <img class="weui-media-box__thumb" src="<c:url value='/static/images/avatar.png' />" alt="">
 				        </div>
 				        <div class="weui-media-box__bd">
 					        <h4 class="weui-media-box__title">
@@ -97,10 +97,10 @@
 				            		{{project.proname}}
 				            	</span>
 				            	<span class="tic-collect">
-				                	<img src="/static/images/hall/uncollect.png" alt="收藏"
+				                	<img src="<c:url value='/static/images/hall/uncollect.png' />" alt="收藏"
 				                	 v-tap="{methods: collect, projectIndex: index, userid: userid}"
 				                	 v-show="!project.isCollected" />
-				                	<img src="/static/images/hall/collect.png" alt="取消收藏"
+				                	<img src="<c:url value='/static/images/hall/collect.png' />" alt="取消收藏"
 				                	 v-tap="{methods: uncollect, projectIndex: index, userid: userid}"
 				                	 v-show="project.isCollected" />
 			                	</span>
