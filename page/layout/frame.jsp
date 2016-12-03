@@ -19,6 +19,12 @@
             <fis:require id="/static/scss/weui.css" />
             <fis:require id="/static/scss/common.scss" />
         </fis:block>
+
+        <fis:block name="js">
+            <fis:require id="/static/libs/common.js" />
+            <fis:require id="/static/libs/vue.js" />
+            <fis:require id="/static/libs/vue-tap.js" />
+        </fis:block>
         
         <fis:block name="jsPre">
         </fis:block>
@@ -30,11 +36,6 @@
         </div>
         <!--livereload-->
     </fis:body>
-    
-    <fis:block name="js">
-        <fis:require id="/static/libs/common.js" />
-        <fis:require id="/static/libs/vue.js" />
-        <fis:require id="/static/libs/vue-tap.js" />
-    </fis:block>
+
 </fis:html>
 

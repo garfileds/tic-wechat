@@ -1,0 +1,24 @@
+.tic-detail-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #edebf7;
+	padding: 1rem 0;
+
+	& > a {
+		display: inline-block;
+		width: 48%;
+		box-sizing: border-box;
+    	text-align: center;
+
+		border-right: solid 1px #ccc4c4;
+
+		& > img {
+			max-width: 100%;
+		}
+	}
+
+	& > a:last-child {
+		border: none;
+	}
+}

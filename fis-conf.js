@@ -41,6 +41,10 @@ fis.match('/static/scss/**.scss', {
   parser: fis.plugin('node-sass')
 });
 
+fis.match('/page/**.js', {
+  isMod: false
+});
+
 fis.media('tic')
   /*.match('**', {
       release: 'D:/freetime/xdtic-be/src/main/webapp/static/$0'

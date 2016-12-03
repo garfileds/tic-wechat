@@ -1,0 +1,46 @@
+$blue: #088fd9;
+$secondary: #999999;
+
+.tic-article {
+	padding: 1rem;
+
+	.tic-article-header {
+		overflow: hidden;
+
+		.tic-article-header-left {
+			display: inline-block;
+			float: left;
+			width: 23.438%;
+
+			img {
+				max-width: 100%;
+			}
+		}
+
+		.tic-article-header-center {
+			display: inline-block;
+			float: left;
+			margin-left: .5rem;
+		}
+
+		.tic-article-header-right {
+			float: right;
+			display: inline-block;
+			padding: 1rem 0;
+		}
+	}
+
+	.tic-title-strong {
+		font-size: 1.5rem;
+		color: $blue;
+	}
+
+	.tic-title-secondary {
+		font-size: .8rem;
+		color: $secondary;
+	}
+
+	.tic-title-em {
+		color: $blue;
+	}
+}
