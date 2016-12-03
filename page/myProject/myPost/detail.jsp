@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/fis" prefix="fis"%>
 
-<fis:extends name="../layout/frame.jsp">
+<fis:extends name="../../layout/frame.jsp">
     <fis:block name="body">
 		<header>
 			<fis:widget name="/page/widget/header/projectDetailHeader.jsp" />	
@@ -13,10 +13,10 @@
 		</main>
 
 		<footer class="tic-detail-footer">
-			<a href="<c:url value='/myPost/editDetail' />?proId=<c:out value='${project.proId}' />" v-tap>
+			<a href="<c:url value='/myProject/myPost/editDetail' />?proId=<c:out value='${project.proId}' />" v-tap>
 				<img src="/static/images/myProject/edit-info.png" alt="编辑信息">
 			</a>
-			<a href="<c:url value='/myPost/signInfo' />?proId=<c:out value='${project.proId}' />" v-tap>
+			<a href="<c:url value='/myProject/myPost/signInfo' />?proId=<c:out value='${project.proId}' />" v-tap>
 				<img src="/static/images/myProject/sign-info.png" alt="报名信息">
 			</a>
 		</footer>
@@ -42,7 +42,7 @@
 
 	<fis:block name="js">
 		<fis:parent />
-		<fis:require id="/static/libs/mod.js" />
+		
     </fis:block>
 
 </fis:extends>

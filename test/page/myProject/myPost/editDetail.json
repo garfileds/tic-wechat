@@ -2,9 +2,7 @@
 	"project": {
 		"proname": "时间典当铺",
 		"tag": ["Web", "情感"],
-		"isCollected": true,
 		"proId": "p001",
-		"statu": "pass",
 		"prowant": "产品经理：2名
             UI设计：1名
             前端：1名",

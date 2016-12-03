@@ -24,6 +24,7 @@
             <fis:require id="/static/libs/common.js" />
             <fis:require id="/static/libs/vue.js" />
             <fis:require id="/static/libs/vue-tap.js" />
+            <fis:require id="/static/libs/mod.js" />
         </fis:block>
         
         <fis:block name="jsPre">
