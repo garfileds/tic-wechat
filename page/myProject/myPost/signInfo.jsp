@@ -42,6 +42,7 @@
 
 	<fis:block name="style">
 		<fis:parent />
+		<fis:require id="/static/scss/signInfo.scss" />
 	</fis:block>
 
 	<fis:block name="jsPre">
