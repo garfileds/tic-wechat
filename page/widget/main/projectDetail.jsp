@@ -14,11 +14,13 @@
             <p class="tic-title-secondary"><c:out value='${project.date}' /></p>
         </div>
 
-        <c:set var="projectStatu" value="审核中" />
-        <c:if test="${project.statu} == 'pass'">
-            <c:set var="projectStatu" value="审核通过" />
+        <c:if test="${project.statu}">
+            <c:set var="projectStatu" value="审核中" />
+            <c:if test="${project.statu} == 'pass'">
+                <c:set var="projectStatu" value="审核通过" />
+            </c:if>
+            <p class="tic-article-header-right tic-title-em">状态：<c:out value="${projectStatu}" /></p>
         </c:if>
-        <p class="tic-article-header-right tic-title-em">状态：<c:out value="${projectStatu}" /></p>
     </div>
     <section class="tic-article-section">
         <p>
