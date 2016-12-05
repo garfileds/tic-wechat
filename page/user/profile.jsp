@@ -32,7 +32,7 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">姓名</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.realName}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.name}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<input type="text" name="name" v-model="user.realName" />
 							</span>
@@ -72,7 +72,7 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">专业</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.major}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.profe}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<input type="text" name="profe" v-model="user.major" />
 							</span>
@@ -86,27 +86,27 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">学号</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.studentNo}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.stunum}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<input type="text" name="stunum" v-model="user.studentNo" />
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">个人能力</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.ability}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.profile}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<textarea name="profile" v-model="user.ability"></textarea>
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">项目经历</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.projectDesc}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.pexperice}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<textarea name="pexperice" v-model="user.projectDesc"></textarea>
 							</span>
 						</div>
 						<input type="hidden" name="id" value="<c:out value="${user.id}" />">
-						<a class="weui-btn weui-btn_primary" id="btnConfirm" v-show="isEditing" v-tap="{methods: editProfile}">确认</a>
+						<button class="weui-btn weui-btn_primary" id="btnConfirm" v-show="isEditing" v-tap="{methods: editProfile}">确认</button>
 					</form>
 				</div>
 			</main>
@@ -118,6 +118,13 @@
 			        <div class="weui-dialog__ft">
 			            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-tap.prevent="{methods: closeDialog}">确定</a>
 			        </div>
+			    </div>
+			</div>
+			<div id="toast" v-show="editIsSucc">
+			    <div class="weui-mask_transparent"></div>
+			    <div class="weui-toast">
+			        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+			        <p class="weui-toast__content">报名成功</p>
 			    </div>
 			</div>
 		</div>
