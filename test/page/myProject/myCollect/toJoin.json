@@ -1,5 +1,6 @@
 {
 	"project": {
+		"userIsJoined": false,
 		"proname": "时间典当铺",
 		"tag": ["Web", "情感"],
 		"isCollected": true,
@@ -12,12 +13,17 @@
         "date": "2016.01.28"
 	},
 
-	"projectCreator": {
-		"id": "u001",
-		"username": "adoug"
-	},
-
-	"user": {
-		"id": "u002"
-	}
+	
+    "user": {
+    	"id": "u001",
+    	"username": "adoug",
+    	"email": "942434869@qq.com",
+    	"name": "张骥",
+		"sex": "boy",
+		"profe": "软件工程",
+		"phone": "15029679086",
+		"stunum": "1603121451",
+		"profile": "ps,c++,ui设计",
+		"pexperice": "人脸识别系统"
+    }
 }

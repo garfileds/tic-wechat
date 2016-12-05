@@ -1,5 +1,6 @@
 {
 	"project": {
+		"userIsJoined": false,
 		"proname": "时间典当铺",
 		"tag": ["Web", "情感"],
 		"isCollected": true,

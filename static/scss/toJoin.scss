@@ -1,5 +1,7 @@
 @import '_input'; 
 
+$error: #f05979;
+
 /*reset we-ui-cell*/
 .weui-cell {
 	display: inline-flex;
@@ -34,6 +36,10 @@
 
 			padding: 1rem;
 			box-sizing: border-box;
+
+			& > input.tic-error-input {
+				border-color: $error;
+			}
 		}
 	}
 }
@@ -49,4 +55,27 @@
 		font-size: .8rem;
 		padding: .8rem 0;
 	}
+}
+
+.tic-form-error {
+	padding: 1rem;
+	color: $error;
+}
+
+/*reset*/
+.tic-cells-nomargin {
+	margin-top: 0;
+}
+
+.weui-btn_primary {
+	background-color: #2b9ddc;
+}
+
+.weui-btn_primary:not(.weui-btn_disabled):active {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #237cad;
+}
+
+.tic-header-three > .tic-header-three-aside:nth-child(3) {
+	visibility: hidden;
 }
