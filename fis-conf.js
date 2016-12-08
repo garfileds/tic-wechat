@@ -75,8 +75,14 @@ fis.media('prod')
   .match('::package', {
     packager: fis.plugin('deps-pack', {
       'pkg/js/main.js': [
+        '/static/libs/common.js',
+        'static/libs/mod.js',
         '/static/libs/vue.js',
         '/static/libs/vue-tap.js'
+      ],
+      'pkg/js/module.js': [
+        'promise',
+        'promise:deps'
       ],
       'pkg/css/main.css': [
         '/static/scss/weui.css',

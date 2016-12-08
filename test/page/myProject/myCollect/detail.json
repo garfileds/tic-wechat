@@ -1,6 +1,5 @@
 {
 	"project": {
-		"userIsJoined": false,
 		"proname": "时间典当铺",
 		"tag": ["Web", "情感"],
 		"isCollected": true,
@@ -11,6 +10,8 @@
         "concat": "邮箱：yuqingyaa@163.com 如有疑问，敬请用以上方式咨询~",
         "date": "2016.01.28"
 	},
+
+	"userIsJoined": false,
 
 	"projectCreator": {
 		"id": "u001",
