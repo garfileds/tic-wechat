@@ -24,7 +24,7 @@ let formResetPass = new Vue({
         },
         errorMsg: function() {
             let msg = '';
-            if (this.usernameError) {
+            if (this.userError) {
                 msg = '用户名或原始密码错误';
             } else if (this.passError) {
                 msg = '两次新密码输入不一致';

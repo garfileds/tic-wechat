@@ -42,7 +42,7 @@ window.addEventListener('load', function() {
 					if (data.code === 'ok') {
 						self.postIsSucc = true;
 						setTimeout(() => {
-							window.location.href = `/myProject/myPost/detail?proId=${self.project.proId}`;
+							window.location.href = `${urlPrefix}/myProject/myPost/detail?proId=${self.project.proId}&uid=${self.user.id}`;
 						}, 500);
 					} else {
 						self.editIsFail = true;

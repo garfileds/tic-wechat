@@ -21,7 +21,7 @@ fis.match('node_modules/**.js', {
     isMod: true
 });
 
-fis.match('/static/js/**.js', {
+fis.match('{/static/js/**.js, /page/**.js}', {
   parser: fis.plugin('babel-5.x', {
       blacklist: ['regenerator'],
       stage: 3
@@ -46,18 +46,6 @@ fis.match('/page/**.js', {
 });
 
 fis.media('tic')
-  /*.match('**', {
-      release: 'D:/freetime/xdtic-be/src/main/webapp/static/$0'
-    })
-  .match('/static/(**)', {
-      release: 'D:/freetime/xdtic-be/src/main/webapp/static/$1'
-    })
-  .match('/page/**.{jsp,vm,html}', {
-      release: 'D:/freetime/xdtic-be/src/main/webapp/WEB-INF/views/$0'
-    })
-  .match('{map.json,${namespace}-map.json}', {
-      release: 'D:/freetime/xdtic-be/src/main/webapp/WEB-INF/config/$0'
-    })*/
   .match('**.{scss, css, js, png, jpeg, jpg}', {
     url: '/xdtic$0'
   })
@@ -72,6 +60,9 @@ fis.media('tic')
 
 /****************prod环境*****************/
 fis.media('prod')
+  .match('**.jsp', {
+    'isHtmlLike': true
+  })
   .match('::package', {
     packager: fis.plugin('deps-pack', {
       'pkg/js/main.js': [
@@ -80,14 +71,76 @@ fis.media('prod')
         '/static/libs/vue.js',
         '/static/libs/vue-tap.js'
       ],
+
       'pkg/js/module.js': [
-        'promise',
-        'promise:deps'
+        '/static/js/hall/hall.js:deps',
+        '/static/js/user/login.js:deps',
+        '/static/js/user/msgs.js:deps',
+        '/static/js/user/profile.js:deps',
+        '/static/js/user/register.js:deps',
+        '/static/js/user/resetPass.js:deps',
+        '/static/myProject/myProject.js:deps',
+        '/static/myProject/postProject.js:deps',
+        '/static/myProject/myPost/editDetail.js:deps',
+        '/static/myProject/myCollect/toJoin.js:deps'
       ],
+
+      'pkg/js/hall/hall.js': [
+        '/static/js/hall/hall.js'
+      ],
+
+      'pkg/js/user/login.js': [
+        '/static/js/user/login.js'
+      ],
+
+      'pkg/js/user/msgs.js': [
+        '/static/js/user/msgs.js'
+      ],
+
+      'pkg/js/user/profile.js': [
+        '/static/js/user/profile.js'
+      ],
+
+      'pkg/js/user/register.js': [
+        '/static/js/user/register.js'
+      ],
+
+      'pkg/js/user/resetPass.js': [
+        '/static/js/user/resetPass.js'
+      ],
+
+      'pkg/myProject/myProject.js': [
+        '/static/myProject/myProject.js'
+      ],
+
+      'pkg/myProject/postProject.js': [
+        '/static/myProject/postProject.js'
+      ],
+
+      'pkg/myProject/myPost/editDetail.js': [
+        '/static/myProject/myPost/editDetail.js'
+      ],
+
+      'pkg/myProject/myCollect/toJoin.js': [
+        '/static/myProject/myCollect/toJoin.js'
+      ],
+
       'pkg/css/main.css': [
         '/static/scss/weui.css',
         '/static/scss/common.scss',
         '/page/widget/footer/nav.scss'
       ]
+    })
+  })
+  .match('*.{js,jsx,ts,tsx,es6,es}', {
+    useHash: true,
+
+    optimizer: fis.plugin('uglify-js')
+  })
+  .match('*.{scss,sass,less,css}', {
+    useHash: true,
+    
+    optimizer: fis.plugin('clean-css',{
+        //option
     })
   });
