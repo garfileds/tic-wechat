@@ -4,7 +4,7 @@ fis.require('jello')(fis);
 fis
   // 排除指定目录
   .set('project.files', ['**', '.**', '.**/**'])
-  .set('project.ignore', ['tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+  .set('project.ignore', ['prod-tic/**', 'tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
   .set('project.fileType.text', 'es');
 
 
@@ -143,4 +143,99 @@ fis.media('prod')
     optimizer: fis.plugin('clean-css',{
         //option
     })
+  });
+
+fis.media('prod-tic')
+  .match('**.jsp', {
+    'isHtmlLike': true
+  })
+  .match('::package', {
+    packager: fis.plugin('deps-pack', {
+      'pkg/js/main.js': [
+        '/static/libs/common.js',
+        '/static/libs/mod.js',
+        '/static/libs/vue.js',
+        '/static/libs/vue-tap.js'
+      ],
+
+      'pkg/js/module.js': [
+        '/static/js/hall/hall.js:deps',
+        '/static/js/user/login.js:deps',
+        '/static/js/user/msgs.js:deps',
+        '/static/js/user/profile.js:deps',
+        '/static/js/user/register.js:deps',
+        '/static/js/user/resetPass.js:deps',
+        '/static/myProject/myProject.js:deps',
+        '/static/myProject/postProject.js:deps',
+        '/static/myProject/myPost/editDetail.js:deps',
+        '/static/myProject/myCollect/toJoin.js:deps'
+      ],
+
+      'pkg/js/hall/hall.js': [
+        '/static/js/hall/hall.js'
+      ],
+
+      'pkg/js/user/login.js': [
+        '/static/js/user/login.js'
+      ],
+
+      'pkg/js/user/msgs.js': [
+        '/static/js/user/msgs.js'
+      ],
+
+      'pkg/js/user/profile.js': [
+        '/static/js/user/profile.js'
+      ],
+
+      'pkg/js/user/register.js': [
+        '/static/js/user/register.js'
+      ],
+
+      'pkg/js/user/resetPass.js': [
+        '/static/js/user/resetPass.js'
+      ],
+
+      'pkg/myProject/myProject.js': [
+        '/static/myProject/myProject.js'
+      ],
+
+      'pkg/myProject/postProject.js': [
+        '/static/myProject/postProject.js'
+      ],
+
+      'pkg/myProject/myPost/editDetail.js': [
+        '/static/myProject/myPost/editDetail.js'
+      ],
+
+      'pkg/myProject/myCollect/toJoin.js': [
+        '/static/myProject/myCollect/toJoin.js'
+      ],
+
+      'pkg/css/main.css': [
+        '/static/scss/weui.css',
+        '/static/scss/common.scss',
+        '/page/widget/footer/nav.scss'
+      ]
+    })
+  })
+  .match('*.{js,jsx,ts,tsx,es6,es}', {
+    useHash: true,
+
+    optimizer: fis.plugin('uglify-js')
+  })
+  .match('*.{scss,sass,less,css}', {
+    useHash: true,
+    
+    optimizer: fis.plugin('clean-css',{
+        //option
+    })
+  })
+  .match('**.{scss, css, js, png, jpeg, jpg}', {
+    url: '/xdtic$0'
+  })
+  .match('{node_modules/**.{js, es}, pkg/**.{js, css}}', {
+    url: '/xdtic/static$0'
+  })
+  .match('page/**.{scss, css, js}', {
+    url: '/xdtic/static$0'
   });
