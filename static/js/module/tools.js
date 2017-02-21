@@ -94,8 +94,21 @@ function getParams(url) {
     return params;
 }
 
+/**
+ * @fileOverview 页面跳转后用户点击后退按钮时留在本页（注册后跳到登录，这时候点击后退）
+ * @param        {[RegExp]}   pattern
+ */
+function avoidBack(pattern) {
+    if (document.referrer.search(pattern) > -1) {
+        for (var i = 0; i < 5; i++) {
+            window.history.pushState(null, document.title);
+        }
+    }
+}
+
 module.exports = {
     formSerialize: serialize,
     SaferHTML: SaferHTML,
-    getParams: getParams
+    getParams: getParams,
+    avoidBack: avoidBack
 };

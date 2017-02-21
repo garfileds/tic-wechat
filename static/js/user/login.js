@@ -4,6 +4,7 @@ let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
 let formSerialize = require('../module/formSerialize');
+let tools = require('../module/tools');
 
 const urlValidUser = `${urlPrefix}/fn/valid/user`;
 
