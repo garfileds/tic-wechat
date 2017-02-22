@@ -719,7 +719,7 @@
    ```
 
   - api: /xdtic/fn/read/msg
-   - 说明：获取系统消息列表
+   - 说明：标记消息已读
    - request `[GET]`
    ```
    {
