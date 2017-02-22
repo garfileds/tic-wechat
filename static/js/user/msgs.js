@@ -12,13 +12,59 @@ let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
 const urlLoadMoreMsg = `${urlPrefix}/fn/get/msg`;
+const urlReadMsg = `${urlPrefix}/fn/read/msg`;
+
+const urlProjectSign = `${urlPrefix}/project`;
+const urlProjectPost = `${urlPrefix}/myProject/myPost/detail`;
 
 let pageNum = 0;
 const pageSize = 8;
 
 Vue.component('tic-msg', {
 	template: '#tic-msg',
-	props: ['msg']
+	props: ['msg', 'index'],
+
+	methods: {
+		readMsg: function(params) {
+			if (this.msg.read) {
+				if (this.msg.type === 'join') {
+					window.location.href = `${urlProjectSign}?uid=${this.msg.uid}&proId=${this.msg.proId}`;
+				} else {
+					window.location.href = `${urlProjectPost}?uid=${this.msg.uid}&proId=${this.msg.proId}`;
+				}
+			}
+
+			//先假装信息已读，若通信失败回滚
+			this.$emit('read', params.msgIndex);
+
+			let self = this;
+
+			let url = `${urlReadMsg}?mid=${this.msg.mid}`;
+			fetch(url, {
+				method: 'GET',
+				headers: {
+					'Accept': 'application/json'
+				}
+			})
+			.then(response => response.json())
+			.then(function(data) {
+				if (data.code === 'error') {
+					self.$emit('unread', params.msgIndex);
+					alert('网络出问题了，请稍后重试');
+				} else {
+					if (self.msg.type === 'join') {
+						window.location.href = `${urlProjectSign}?uid=${self.msg.uid}&proId=${self.msg.proId}`;
+					} else {
+						window.location.href = `${urlProjectPost}?uid=${self.msg.uid}&proId=${self.msg.proId}`;
+					}
+				}
+			})
+			.catch(function(error) {
+				self.$emit('unread', params.msgIndex);
+				alert('网络出问题了，请稍后重试');
+			});
+		}
+	}
 });
 
 let msgBox = new Vue({
@@ -37,7 +83,15 @@ let msgBox = new Vue({
 	},
 
 	methods: {
-		loadMore: loadMore
+		loadMore: loadMore,
+
+		readMsg: function(msgIndex) {
+			this.msgs[msgIndex].read = true;
+		},
+
+		unreadMsg: function(msgIndex) {
+			this.msgs[msgIndex].read = false;
+		}
 	},
 
 	directives: {infiniteScroll}

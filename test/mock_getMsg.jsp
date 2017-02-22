@@ -5,10 +5,19 @@
     	
         "msgs": [{
 		"type": "join",
+    "read": false,
 		"uid": 1,
 		"mid": 1,
+    "proId": 1,
 		"massage": "你已成功报名BU Qun的5分钟撩妹app，请等待发布者的联系，祝你顺利~",
-		"existDate": "10分钟前"}]
+		"existDate": "10分钟前"}, {
+    "type": "post",
+    "read": "true",
+    "uid": 2,
+    "mid": 2,
+    "proId": 2,
+    "massage": "你已成功发布adoug的SSR画符app，请等待审核，祝你顺利~",
+    "existDate": "10分钟前"}]
 }
 
 <%

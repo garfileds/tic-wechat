@@ -718,6 +718,21 @@
    }
    ```
 
+  - api: /xdtic/fn/read/msg
+   - 说明：获取系统消息列表
+   - request `[GET]`
+   ```
+   {
+        mid: m001
+   }
+   ```
+   - response `[JSON]`
+   ```
+   {
+        "code": "ok"/"error"
+    }
+   ```
+
 #### 修改密码页面
 
 - url： /xdtic/user/resetPass
