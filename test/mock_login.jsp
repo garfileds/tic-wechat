@@ -1,5 +1,5 @@
 {
-	"code": "ok"
+	"code": "error"
 }
 
 <%
