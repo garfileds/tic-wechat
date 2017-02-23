@@ -1,0 +1,28 @@
+.pushable {
+	height: 100%;
+	overflow-x: hidden;
+	padding: 0;
+}
+
+@media only screen and (max-width: 374px) {
+	.tic-logo {
+		display: none!important;
+	}
+}
+
+.article {
+	flex: 1 1 auto;
+}
+
+.dimmed::before {
+	position: absolute;
+
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .3);
+
+	content: "";
+}
+
