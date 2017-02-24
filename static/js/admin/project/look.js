@@ -11,28 +11,30 @@ const infiniteScroll = require('vue-infinite-scroll').infiniteScroll;
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlGetProjectUncheck = `${urlPrefix}/fn/admin/get/project/uncheck`;
+const urlGetProjectAccept = `${urlPrefix}/fn/admin/get/project/accept`;
 const urlOperateProject = `${urlPrefix}/fn/admin/project/operate`;
 
 let pageNum = 0;
 const pageSize = 8;
 
-Vue.component('tic-project-check', {
-	template: '#tic-project-check',
+Vue.component('tic-project-look', {
+	template: '#tic-project-look',
 	props: ['project', 'index'],
 
+	data: function() {
+		return {
+			isDeleted: false
+		};
+	},
+
 	methods: {
-		reject: function(params) {
+		deleteProject: function(params) {
 			let self = this;
 
-			requestProcessProject(self, 'reject', params.proIndex);
-		},
-
-		accept: function(params) {
-			let self = this;
-
-			requestProcessProject(self, 'accept', params.proIndex);
-		},
+			if (confirm('确定要删除该项目吗？')) {
+				requestProcessProject(self, 'delete', params.proIndex);
+			}
+		}
 	}
 });
 
@@ -62,15 +64,8 @@ let projectBox = new Vue({
             this.sidePush = !this.sidePush;
         },
 
-        processProject: function(proIndex) {
-        	let self = this;
-
-        	this.projects[proIndex].isProcessed = true;
-        	this.$nextTick(function() {
-				setTimeout(function() {
-	            	self.projects[proIndex].animationEnd = true;
-	            }, 1000);
-			});
+        deleteProject: function(proIndex) {
+        	this.projects.splice(proIndex, 1);
         },
 
         search: function() {
@@ -95,7 +90,7 @@ function loadMore() {
 		return;
 	}
 
-	let url = `${urlGetProjectUncheck}?pageNum=${pageNum}&size=${pageSize}&keyWords=${this.keyWords}`;
+	let url = `${urlGetProjectAccept}?pageNum=${pageNum}&size=${pageSize}&keyWords=${this.keyWords}`;
 
 	this.busy = true;
 	this.isLoading = true;
@@ -128,9 +123,9 @@ function loadMore() {
 }
 
 /**
- * @fileOverview 将审核操作发送给后台
+ * @fileOverview 将删除操作发送给后台
  * @param        {[vue-组件]}   vProject  [project组件]
- * @param        {[String]}   operation [审核操作：pass/reject]
+ * @param        {[String]}   operation [审核操作：delete]
  * @param        {[Int]}   proIndex  [vProject父组件中的索引]
  */
 function requestProcessProject(vProject, operation, proIndex) {
@@ -147,7 +142,8 @@ function requestProcessProject(vProject, operation, proIndex) {
 	.then(response => response.json())
 	.then(function(data) {
 		if (data.code === 'ok') {
-			vProject.$emit('process', proIndex);
+			vProject.isDeleted = true;
+			vProject.$emit('delete', proIndex);
 		} else {
 			alert('网络错误，请稍后重试。');
 		}

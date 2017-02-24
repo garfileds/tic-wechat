@@ -752,4 +752,91 @@
     }
     ```
 
+### 管理员
 
+#### 待审核项目页面
+
+- url: /xdtic/admin/project/check
+- jsp: /page/admin/project/uncheck.jsp
+
+- api: /xdtic/fn/admin/get/project/uncheck
+
+    - 获取待审核项目 & 在待审核项目中搜索
+    - request `[GET]`
+    ```
+    {
+        pageNum: 0,
+        size: 8,
+        keyWords: ''
+    }
+    ```
+    - response `[JSON]`
+    ```
+    {
+    "size": 2,
+	"pageNum": 0,
+	"hasMore": false,
+
+	"projects": [{
+		"proId": "p001",
+		"proname": "SSR召唤符画法",
+		"username": "adoug"
+	}, {
+		"proId": "p002",
+		"proname": "tic项目池",
+		"username": "adoug"
+	}]
+    }
+    ```
+
+- api: /fn/admin/project/operate
+
+    - 发送项目操作结果
+    - request `[POST]` `[JSON]`
+    ```
+    {
+        proId: p001,
+        operation: reject/accept/delete
+    }
+    ```
+    - response `[JSON]`
+    ```
+    {
+        code: ok
+    }
+    ```
+
+#### 已通过项目页面
+
+- url: /xdtic/admin/project/accept
+- jsp: /page/admin/project/accept.jsp
+
+- api: /xdtic/fn/admin/get/project/accept
+
+    - 获取已通过项目 & 在已通过项目中搜索
+    - request `[GET]`
+    ```
+    {
+        pageNum: 0,
+        size: 8,
+        keyWords: ''
+    }
+    ```
+    - response `[JSON]`
+    ```
+    {
+    "size": 2,
+	"pageNum": 0,
+	"hasMore": false,
+
+	"projects": [{
+		"proId": "p001",
+		"proname": "SSR召唤符画法",
+		"username": "adoug"
+	}, {
+		"proId": "p002",
+		"proname": "tic项目池",
+		"username": "adoug"
+	}]
+    }
+    ```

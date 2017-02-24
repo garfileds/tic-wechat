@@ -8,12 +8,12 @@
             <div class="ui masthead vertical segment">
                 <div class="ui container">
                     <div class="introduction">
-                        <h1 class="ui header">项目审核</h1>
+                        <h1 class="ui header">待审核项目</h1>
                     </div>
                 </div>
             </div>
             <div class="ui main intro container" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" infinite-scroll-immediate-check="checkImmediately">
-                <table class="ui basic collapsing celled table">
+                <table class="ui basic collapsing celled table centered grid">
                     <tbody>
                         <tr is="tic-project-check"
                          @process="processProject"
