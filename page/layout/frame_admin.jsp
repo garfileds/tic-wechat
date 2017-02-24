@@ -46,8 +46,8 @@
                         项目管理
                     </div>
                     <div class="menu">
-                        <a href="<c:url value='/admin/project/check' />" class="item">项目审核</a>
-                        <a href="<c:url value='/admin/project/look' />" class="item">项目浏览</a>
+                        <a href="<c:url value='/admin/project/check' />" class="item">待审核项目</a>
+                        <a href="<c:url value='/admin/project/look' />" class="item">已通过项目</a>
                     </div>
                 </div>
                 <div class="item">
