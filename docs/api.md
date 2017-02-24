@@ -840,3 +840,55 @@
 	}]
     }
     ```
+    
+#### 用户浏览页面
+- url: /xdtic/admin/user/look
+- jsp: /page/admin/user/look.jsp
+
+- api: /xdtic/fn/admin/get/user
+
+    - 获取用户列表 & 在用户中搜索
+    - request `[GET]`
+    ```
+    {
+        pageNum: 0,
+        size: 8,
+        keyWords: ''
+    }
+    ```
+    - response `[JSON]`
+    ```
+    {
+    "size": 2,
+	"pageNum": 0,
+	"hasMore": false,
+
+	"projects": [{
+		"id": "u001",
+		"username": "adoug",
+		"name": "陈智仁",
+		"email": "942434869@qq.com"
+	}, {
+		"id": "u002",
+		"username": "garfiled",
+		"name": "加菲",
+		"email": "yuqingya101@163.com"
+	}]
+    }
+    ```
+
+- api: /fn/admin/user/delete
+
+    - 删除用户
+    - request `[POST]` `[JSON]`
+    ```
+    {
+        uid: ["u001"] / "All"  //All表示删除所有用户
+    }
+    ```
+    - response `[JSON]`
+    ```
+    {
+        code: ok
+    }
+    ```
