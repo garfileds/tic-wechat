@@ -34,6 +34,7 @@
     </fis:head>
 
     <fis:body class="body">
+        <!--这个的app对应的Vue组件须在各页面自行构造，处理得不是很好-->
         <div id="app" class="pushable">
             <div class="ui vertical inverted sidebar menu left"
              :class="{visible: sidePush, uncover: sidePush}">
@@ -66,12 +67,14 @@
                     </a>
                     <div class="item tic-logo">TIC</div>
                     <div class="right menu">
-                        <div class="item">
-                            <div class="ui icon input">
-                                <input type="text" placeholder="随心所搜...">
-                                <i class="search link icon"></i>
+                        <form @submit.prevent="search">
+                            <div class="item">
+                                <div class="ui icon input">
+                                    <input type="text" :placeholder="placeholder" v-model="keyWords">
+                                    <i class="search link icon"></i>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

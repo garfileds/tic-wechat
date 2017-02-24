@@ -1,0 +1,34 @@
+.masthead .introduction {
+	display: block;
+	width: 100%;
+}
+
+#app .masthead.segment {
+	padding-top: 5em;
+
+	position: relative;
+    z-index: 3;
+    margin: 0em;
+    padding: 5em 0 1em;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: none;
+}
+
+a.tic-project-wrap {
+	display: block;
+}
+
+.project-item {
+    transition: transform .5s ease,
+                visibility .5s ease .5s;
+    
+    &.project-slide {
+        transform: translate3d(-150%, 0, 0);
+        visibility: hidden;
+    }
+
+    &.project-slide-end {
+        display: none;
+    }
+}

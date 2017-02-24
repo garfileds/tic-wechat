@@ -1,15 +1,22 @@
+/**
+ * @fileOverview for /project/check.jsp
+ * @Author       adoug
+ * @DateTime     2017-2-23
+ */
+
 'use strict';
 
-let app = new Vue({
-    el: '#app',
+let projectBox = new Vue({
+	el: '#app',
+	data: {
+		sidePush: false,
 
-    data: {
-        sidePush: false
-    },
+		placeholder: '随心所搜...'
+	},
 
-    methods: {
-        push: function() {
+	methods: {
+		push: function() {
             this.sidePush = !this.sidePush;
         }
-    }
+	}
 });
