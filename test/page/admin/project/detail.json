@@ -1,6 +1,6 @@
 {
 	"project": {
-		"hasProcessed": true, //是否审核通过
+		"hasProcessed": false, //是否审核通过
 		"proname": "时间典当铺",
 		"tag": ["Web", "情感"],
 		"proId": "p001",
