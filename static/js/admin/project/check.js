@@ -141,7 +141,7 @@ function requestProcessProject(vProject, operation, proIndex) {
 		},
 		body: JSON.stringify({
 			operation: operation,
-			proID: vProject.project.proId
+			proId: vProject.project.proId
 		})
 	})
 	.then(response => response.json())

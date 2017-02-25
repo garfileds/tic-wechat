@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui fixed inverted menu">
+            <div class="tic-menu-top ui fixed inverted menu">
                 <div class="ui container">
                     <a class="launch icon item" v-tap.prevent='{methods: push}'>
                         <i class="content icon"></i>
