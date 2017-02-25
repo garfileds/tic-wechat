@@ -30,6 +30,7 @@
 .masthead .introduction {
 	display: block;
 	width: 100%;
+	text-align: center;
 }
 
 #app .masthead.segment {
@@ -42,4 +43,12 @@
     background-color: #FFFFFF;
     border-bottom: 1px solid #DDDDDD;
     box-shadow: none;
+}
+
+#app .article > .intro {
+	padding: 2em 0 1em;
+}
+
+.tic-app.pushable {
+	transform: inherit;
 }
