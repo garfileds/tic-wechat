@@ -54,6 +54,9 @@ fis.media('tic')
   })
   .match('page/**.{scss, css, js}', {
     url: '/xdtic/static$0'
+  })
+  .match('**/fonts/**.{eot, woff2, woff, ttf, svg}', {
+    url: '/xdtic/static$0'
   });
 
 

@@ -833,6 +833,12 @@
 
 - url: /xdtic/admin/login
 - jsp: /page/admin/login
+- 页面所需变量
+```
+{
+    loginFail: false
+}
+```
 
 - api: /xdtic/fn/admin/login
 
@@ -924,7 +930,7 @@
 	"pageNum": 0,
 	"hasMore": false,
 
-	"projects": [{
+	"users": [{
 		"id": "u001",
 		"username": "adoug",
 		"name": "陈智仁",

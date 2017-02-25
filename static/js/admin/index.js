@@ -11,7 +11,9 @@ let projectBox = new Vue({
 	data: {
 		sidePush: false,
 
-		placeholder: '随心所搜...'
+		placeholder: '随心所搜...',
+
+		keyWords: ''
 	},
 
 	methods: {

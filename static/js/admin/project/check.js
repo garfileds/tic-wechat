@@ -69,7 +69,7 @@ let projectBox = new Vue({
         	this.$nextTick(function() {
 				setTimeout(function() {
 	            	self.projects[proIndex].animationEnd = true;
-	            }, 1000);
+	            }, 500);
 			});
         },
 
