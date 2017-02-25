@@ -11,12 +11,15 @@
 		<main>
 			<fis:widget name="/page/widget/main/projectDetail.jsp" />	
 		</main>
-
-		<div class="ui buttons tic-buttons" id="projectOperation">
-            <button class="ui button" v-tap="{methods: reject}">拒绝</button>
-            <div class="or"></div>
-            <button class="ui positive button" v-tap="{methods: accept}">通过</button>
-        </div> 
+	
+		<p class="haha"><c:out value="${project.accept}" /></p>
+        <c:if test="${!project.accept}">
+			<div class="ui buttons tic-buttons" id="projectOperation">
+	            <button class="ui button" v-tap="{methods: reject}">拒绝</button>
+	            <div class="or"></div>
+	            <button class="ui positive button" v-tap="{methods: accept}">通过</button>
+	        </div>
+	    </c:if>
         <div id="toast" v-show="isChecked" v-cloak>
 		    <div class="weui-mask_transparent"></div>
 		    <div class="weui-toast">
