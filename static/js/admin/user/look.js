@@ -162,7 +162,7 @@ function requestDeleteUser(app, uid) {
 			'Accept': 'application/json'
 		},
 		body: JSON.stringify({
-			uid: uid
+			"uid": uid
 		})
 	})
 	.then(response => response.json())

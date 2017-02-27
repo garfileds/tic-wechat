@@ -12,6 +12,9 @@ let formResetPass = new Vue({
 		passOld: '',
         passNew: '',
         passNewConfirm: '',
+
+        inputNull: false,
+
         userError: false,
         passError: false
 	},
@@ -24,7 +27,9 @@ let formResetPass = new Vue({
         },
         errorMsg: function() {
             let msg = '';
-            if (this.userError) {
+            if (this.inputNull) {
+                msg = '表单没有填完哦';
+            } else if (this.userError) {
                 msg = '用户名或原始密码错误';
             } else if (this.passError) {
                 msg = '两次新密码输入不一致';
@@ -32,7 +37,7 @@ let formResetPass = new Vue({
             return msg;
         },
         hasError: function() {
-            return this.userError || this.passError;
+            return this.userError || this.passError || this.inputNull;
         }
     },
 
@@ -45,8 +50,8 @@ let formResetPass = new Vue({
                   'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                  username: formResetPass.username,
-                  password: formResetPass.passOld
+                  "username": formResetPass.username,
+                  "password": formResetPass.passOld
                 })
             })
             .then(response => response.json())
@@ -67,21 +72,31 @@ let formResetPass = new Vue({
             return this.passError;
         },
 
+        validInputNull: function() {
+            this.inputNull = !(!!this.username && !!this.passOld && !!this.passNew && !!this.passNewConfirm);
+            return this.inputNull;
+        },
+
         validForm: function(param) {
+            if (this.validInputNull() && this.validPass()) {
+                return;
+            }
+
             fetch(urlValidUserName, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  username: formResetPass.username,
-                  password: formResetPass.passOld
+                  "username": formResetPass.username,
+                  "password": formResetPass.passOld
                 })
             })
             .then(response => response.json())
             .then(function(data) {
                 if (data.code == 'ok') {
                     formResetPass.userError = false;
+                    formResetPass.validInputNull();
                     formResetPass.validPass();
                 } else {
                     formResetPass.userError = true;
