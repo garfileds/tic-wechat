@@ -25,7 +25,7 @@ function serialize(form) {
                             } else {
                                 opValue = (option.hasAttribute['value'].specified ? option.value : option.text); //IE下
                             }
-                            parts.push(encodeURIComponent(field.name) + '=' + encodeURIComponent(opValue));
+                            parts.push(encodeURIComponent(field.name) + '=' + encodeURIComponent(opValue.trim()));
                         }
 
                     }
