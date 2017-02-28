@@ -47,12 +47,10 @@ Vue.component('tic-project', {
 
 	computed: {
 		projectDetailHref: function() {
-			let projectDetailHref = `${urlPrefix}`;
-
 			if (this.project.userid === this.userid) {
 				return `${urlPrefix}/myProject/myPost/detail?proId=${this.project.proId}`;
 			} else {
-				return `{urlPrefix}/project?proId=${this.project.proId}&uid={this.userid}`;
+				return `${urlPrefix}/project?proId=${this.project.proId}&uid=${this.userid}`;
 			}
 		}
 	},

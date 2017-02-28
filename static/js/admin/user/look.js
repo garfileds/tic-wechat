@@ -134,7 +134,8 @@ function loadMore() {
 		method: 'GET',
 		headers: {
 			'Accept': 'application/json'
-		}
+		},
+		credentials: 'same-origin'
 	})
 	.then(response => response.json())
 	.then(function(data) {
@@ -162,6 +163,7 @@ function requestDeleteUser(app, uid) {
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
 		},
+		credentials: 'same-origin',
 		body: JSON.stringify({
 			"uid": uid
 		})
