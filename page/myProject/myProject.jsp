@@ -61,9 +61,8 @@
 			<div class="weui-loadmore weui-loadmore_line" v-show="noMore">
 			    <span class="weui-loadmore__tips">没有啦</span>
 			</div>
+			<fis:widget name="/page/widget/footer/nav.jsp" />
 		</main>		
-
-		<fis:widget name="/page/widget/footer/nav.jsp" />
 	</fis:block>
 
 	<fis:block name="style">
@@ -76,6 +75,8 @@
 			var userInfo = {
 				id: '<c:out value="${user.id}" />'
 			};
+
+			var pageSelected = 'myProject';
 		</script>
 	</fis:block>
 

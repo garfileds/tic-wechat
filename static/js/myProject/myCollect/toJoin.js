@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 					if (data.code === 'ok') {
 						self.editIsSucc = true;
 						setTimeout(() => {
-							window.location.href = `${urlPrefix}/myProject/myCollect/detail?uid=${self.user.id}&proId=${self.project.proId}`;
+							window.location.href = `${urlPrefix}/project?uid=${self.user.id}&proId=${self.project.proId}`;
 						}, 500);
 					} else {
 						self.editFail = true;
