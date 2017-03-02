@@ -9,7 +9,7 @@
 		"uid": 1,
 		"mid": 1,
     "proId": 1,
-		"massage": "你已成功报名BU Qun的5分钟撩妹app，请等待发布者的联系，祝你顺利~",
+		"massage": "有人报名了您的交友app！！！！！",
 		"existDate": "10分钟前"}, {
     "type": "post",
     "read": "true",
