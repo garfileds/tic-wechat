@@ -6,7 +6,7 @@
 	<fis:block name="body">
 		<header id="appHeader">
 			<div class="tic-header-three">
-				<a href="javascript:window.history.go(-1);" v-tap class="tic-header-three-aside">
+				<a v-tap.prevent="{methods: navBack}" class="tic-header-three-aside">
         			<img src="/static/images/arrow_prev.png" alt="后退">
     			</a>
 				<h2>系统信息</h2>
