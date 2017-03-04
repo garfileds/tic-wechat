@@ -4,7 +4,7 @@ fis.require('jello')(fis);
 fis
   // 排除指定目录
   .set('project.files', ['**', '.**', '.**/**'])
-  .set('project.ignore', ['prod-tic/**', 'tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js'])
+  .set('project.ignore', ['prod-tic/**', 'tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js', 'WEB-INF/**'])
   .set('project.fileType.text', 'es');
 
 
