@@ -67,3 +67,11 @@ $secondary: #999999;
 .tic-header-three > .tic-header-three-aside:nth-child(3) {
 	visibility: hidden;
 }
+
+$error: #f05979;
+.tic-error-tip {
+	color: $error;
+	text-align: left;
+	margin-bottom: .6rem;
+	padding: 10px 15px;
+}
