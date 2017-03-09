@@ -34,7 +34,7 @@
 					<button class="weui-btn weui-btn_primary" id="btnRegister" v-tap.prevent="{ methods: validForm }">注册</button>
 				</div>
 				<a href="<c:url value='/user/login' />" class="tic-form-para">
-					已经有账号？快快登录
+					已有账号？返回登录
 				</a>
 			</form>
 		</main>

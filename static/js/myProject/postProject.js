@@ -106,7 +106,11 @@ let appPostProject = new Vue({
 			prowant: [{
 				pattern: /^.{6,}$/,
 				errorMsg: '招聘详情至少6个字'
-			}]
+			}],
+            concat: [{
+			    pattern: 'required',
+                errorMsg: '联系方式没有填'
+            }]
 		}
 	},
 
