@@ -218,7 +218,7 @@ function loadProject() {
 
 	this.busy = true;
 	this.isLoading = true;
-	self = this;
+	let self = this;
 
 	fetch(url, {
 		method: 'GET',
@@ -252,7 +252,7 @@ function loadProject() {
 function loadHotProject() {
 	let url = `${urlSearchHotProject}?hotSize=${this.hotSize}&keyWords=${this.keyWords}&userid=${this.user.id}`;
 
-	self = this;
+	let self = this;
 
 	fetch(url, {
 		method: 'GET',

@@ -51,3 +51,29 @@ $green: #1AAD19;
 	color: $green;
 	font-size: 1.5rem;
 }
+
+$secondary: #999999;
+
+.tic-header-three-center {
+	.tic-title-main {
+		font-size: 1.5rem;
+	}
+	
+	.tic-title-secondary {
+		font-size: .8rem;
+		color: $secondary;
+
+		& > span {
+			padding-right: .3rem
+		}
+	}
+}
+
+$error: #f05979;
+.tic-error-tip {
+	color: $error;
+	text-align: left;
+	margin-bottom: .6rem;
+	padding: 10px 15px;
+
+}
