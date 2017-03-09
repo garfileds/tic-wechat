@@ -25,13 +25,13 @@
 						<div class="weui-cells weui-cells_form">
 							<div class="weui-cell">
 							    <div class="weui-cell__bd">
-							        <input class="weui-input" type="text" name="title" placeholder="标题"
+							        <input class="weui-input" type="text" name="title" placeholder="标题（至少2个字）"
 									 v-model="title" />
 							    </div>
 							</div>
 							<div class="weui-cell">
 							    <div class="weui-cell__bd">
-							        <textarea class="weui-textarea" name="promassage" placeholder="项目详情介绍" rows="5"
+							        <textarea class="weui-textarea" name="promassage" placeholder="项目详情介绍（至少10个字）" rows="5"
 									 v-model="promassage"></textarea>
 							    </div>
 							</div>
@@ -41,7 +41,7 @@
 						<div class="weui-cells weui-cells_form">
 						    <div class="weui-cell">
 						        <div class="weui-cell__bd">
-						            <textarea class="weui-textarea" name="prowant" placeholder="招聘信息" rows="3"
+						            <textarea class="weui-textarea" name="prowant" placeholder="招聘信息（至少6个字）" rows="3"
 									 v-model="prowant"></textarea>
 						        </div>
 							   </div>
@@ -74,7 +74,7 @@
 			    <div class="weui-mask_transparent"></div>
 			    <div class="weui-toast">
 			        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
-			        <p class="weui-toast__content">成功发布</p>
+			        <p class="weui-toast__content">发布成功</p>
 			    </div>
 			</div>
 		</div>

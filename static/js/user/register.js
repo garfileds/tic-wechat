@@ -136,7 +136,7 @@ formRegister = new Vue({
             }
 
             let sequence = Promise.resolve();
-            fileds.forEach(function (filed) {
+            /*fileds.forEach(function (filed) {
                 sequence = sequence.then(() => {
                     return new Promise(formRegister._validFiledGen(filed));
                 }).then(result => {
@@ -150,7 +150,27 @@ formRegister = new Vue({
                 formRegister.$el.submit();
             }).catch(error => {
                 console.log('form invalid');
-            });
+            });*/
+
+            for (let i = 0, len = fileds.length; i <= len; i++) {
+                (function (index) {
+                    if (index === len) {
+                        sequence.then(() => {
+                            formRegister.$el.submit();
+                        }).catch(error => {
+                            console.log('form invalid');
+                        });
+                    } else {
+                        sequence = sequence.then(() => {
+                            return new Promise(formRegister._validFiledGen(fileds[index]));
+                        }).then(result => {
+                            if (result.code === 'invalid') {
+                                throw new Error('Big Error');
+                            }
+                        });
+                    }
+                })(i);
+            }
         },
 
         /**
@@ -167,7 +187,7 @@ formRegister = new Vue({
                 let sequence = Promise.resolve();
 
                 // execute rule-valid asyn
-                filedRule.forEach(function (rule) {
+                /*filedRule.forEach(function (rule) {
                     sequence = sequence.then(() => {
                         return [rule].map(rule2Promise)[0];
                     }).then(result => {
@@ -192,7 +212,37 @@ formRegister = new Vue({
                     } else {
                         filedPromiseResolve({code: 'valid'});
                     }
-                });
+                });*/
+
+                for (let i = 0, len = filedRule.length; i <= len; i++) {
+                    (function (index) {
+                        if (index == len) {
+                            sequence.catch(error => {
+                                return {code: 'invalid'};
+                            }).then(result => {
+                                if (result.code === 'invalid') {
+                                    filedPromiseResolve({code: 'invalid'});
+                                } else {
+                                    filedPromiseResolve({code: 'valid'});
+                                }
+                            });
+                        } else {
+                            sequence = sequence.then(() => {
+                                return [filedRule[index]].map(rule2Promise)[0];
+                            }).then(result => {
+                                let filed = result.rule.filed;
+                                let index = result.rule.index;
+                                if (result.code === 'invalid') {
+                                    formRegister.validRule[filed][index].invalid = true;
+                                    throw new Error('Big Error');
+                                } else if (result.code === 'valid') {
+                                    formRegister.validRule[filed][index].invalid = false;
+                                    return {code: 'valid'};
+                                }
+                            });
+                        }
+                    })(i);
+                }
             };
         },
 
@@ -258,7 +308,7 @@ function nameIsUsed(resolve, reject, rule) {
     .then(function(data) {
         if (data.code === 'ok') {
             self.validRule[rule.filed][rule.index].invalid = false;
-            resolve();
+            resolve({code: 'valid', rule});
         } else {
             self.validRule[rule.filed][rule.index].invalid = true;
             throw new Error('Big Error');

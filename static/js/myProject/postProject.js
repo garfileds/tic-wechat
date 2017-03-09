@@ -215,7 +215,7 @@ let appPostProject = new Vue({
             }
 
             let sequence = Promise.resolve();
-            fileds.forEach(function (filed) {
+            /*fileds.forEach(function (filed) {
                 sequence = sequence.then(() => {
                     return new Promise(appPostProject._validFiledGen(filed));
                 }).then(result => {
@@ -229,7 +229,27 @@ let appPostProject = new Vue({
                 appPostProject.postProject();
             }).catch(error => {
                 console.log('form invalid');
-            });
+            });*/
+
+            for (let i = 0, len = fileds.length; i <= len; i++) {
+                (function (index) {
+                    if (index === len) {
+                        sequence.then(() => {
+                            appPostProject.postProject();
+                        }).catch(error => {
+                            console.log('form invalid');
+                        });
+                    } else {
+                        sequence = sequence.then(() => {
+                            return new Promise(appPostProject._validFiledGen(fileds[index]));
+                        }).then(result => {
+                            if (result.code === 'invalid') {
+                                throw new Error('Big Error');
+                            }
+                        });
+                    }
+                })(i);
+            }
         },
 
         /**
@@ -246,7 +266,7 @@ let appPostProject = new Vue({
                 let sequence = Promise.resolve();
 
                 // execute rule-valid asyn
-                filedRule.forEach(function (rule) {
+                /*filedRule.forEach(function (rule) {
                     sequence = sequence.then(() => {
                         return [rule].map(rule2Promise)[0];
                     }).then(result => {
@@ -257,7 +277,7 @@ let appPostProject = new Vue({
                             throw new Error('Big Error');
                         } else if (result.code === 'valid') {
                             appPostProject.validRule[filed][index].invalid = false;
-                            resolve();
+                            return;
                         }
                     });
                 });
@@ -271,7 +291,37 @@ let appPostProject = new Vue({
                         } else {
                             filedPromiseResolve({code: 'valid'});
                         }
-                    });
+                    });*/
+
+                for (let i = 0, len = filedRule.length; i <= len; i++) {
+                    (function (index) {
+                        if (index == len) {
+                            sequence.catch(error => {
+                                return {code: 'invalid'};
+                            }).then(result => {
+                                if (result.code === 'invalid') {
+                                    filedPromiseResolve({code: 'invalid'});
+                                } else {
+                                    filedPromiseResolve({code: 'valid'});
+                                }
+                            });
+                        } else {
+                            sequence = sequence.then(() => {
+                                return [filedRule[index]].map(rule2Promise)[0];
+                            }).then(result => {
+                                let filed = result.rule.filed;
+                                let index = result.rule.index;
+                                if (result.code === 'invalid') {
+                                    appPostProject.validRule[filed][index].invalid = true;
+                                    throw new Error('Big Error');
+                                } else if (result.code === 'valid') {
+                                    appPostProject.validRule[filed][index].invalid = false;
+                                    return {code: 'valid'};
+                                }
+                            });
+                        }
+                    })(i);
+                }
             };
         },
 
