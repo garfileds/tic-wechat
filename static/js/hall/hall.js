@@ -195,7 +195,7 @@ let searchBar = new Vue({
 		cancelSearch: function() {
 			this.keyWords = '';
 			this.isFocusing = false;
-			if (this.projects.length === 0 && this.hotProjects.length === 0) {
+			if (projectBox.projects.length === 0 && projectBox.hotProjects.length === 0) {
 				window.location.reload();
 			}
 		},
