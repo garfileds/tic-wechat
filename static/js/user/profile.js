@@ -13,6 +13,36 @@ let tools = require('../module/tools');
 
 const urlUpdateProfile = `${urlPrefix}/fn/update/profile`;
 
+const multilineContent = {
+    render: function (createElement) {
+        let lines = this.content.split('\n');
+        let len = lines.length;
+        let linesNew = [];
+
+        while(len--) {
+            linesNew.unshift(lines[len], 'br');
+        }
+        linesNew.pop();
+
+        return createElement(
+            'p',
+            linesNew.map(function (line) {
+                if (line === 'br') {
+                    return createElement(line);
+                } else {
+                    return createElement('span', line);
+                }
+            })
+        );
+    },
+    props: {
+        content: {
+            require: true,
+            type: String
+        }
+    }
+};
+
 let appProfile = new Vue({
 	el: '#appProfile',
 	data: {
@@ -68,5 +98,9 @@ let appProfile = new Vue({
 		closeDialog: function() {
 			this.editFail = false;
 		}
+	},
+
+	components: {
+		'multiline-content': multilineContent
 	}
 });

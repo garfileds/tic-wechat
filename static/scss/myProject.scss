@@ -12,8 +12,12 @@ $secondary: #999999;
 		font-size: 1.25rem;
 		color: $blue;
 
-		.tic-collect {
+		.tic-collect, .tic-delete {
 			float: right;
+		}
+
+		.tic-delete {
+			margin-right: .5em;
 		}
 	}
 
