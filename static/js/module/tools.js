@@ -106,9 +106,22 @@ function avoidBack(pattern) {
     }
 }
 
+function obj2form(obj) {
+    let form = [];
+
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            form.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
+        }
+    }
+
+    return form.join('&');
+}
+
 module.exports = {
     formSerialize: serialize,
     SaferHTML: SaferHTML,
     getParams: getParams,
-    avoidBack: avoidBack
+    avoidBack: avoidBack,
+    obj2form: obj2form
 };
