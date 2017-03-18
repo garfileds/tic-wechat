@@ -3,7 +3,9 @@
 let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
-const urlValidUserName = `${urlPrefix}/fn/valid/user`;
+let MD5 = require('crypto-js/md5');
+
+const urlValidUser = `${urlPrefix}/fn/valid/user`;
 
 let formResetPass = new Vue({
 	el: '#formResetPass',
@@ -43,7 +45,7 @@ let formResetPass = new Vue({
 
     methods: {
         validUser: function(event) {
-            fetch(urlValidUserName, {
+            fetch(urlValidUser, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ let formResetPass = new Vue({
                 },
                 body: JSON.stringify({
                   "username": formResetPass.username,
-                  "password": formResetPass.passOld
+                  "password": MD5(formResetPass.passOld).toString()
                 })
             })
             .then(response => response.json())
@@ -82,14 +84,15 @@ let formResetPass = new Vue({
                 return;
             }
 
-            fetch(urlValidUserName, {
+            fetch(urlValidUser, {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                   "username": formResetPass.username,
-                  "password": formResetPass.passOld
+                  "password": MD5(formResetPass.passOld).toString()
                 })
             })
             .then(response => response.json())
@@ -103,7 +106,10 @@ let formResetPass = new Vue({
                 }
 
                 if (!formResetPass.hasError) {
-                    formResetPass.$el.submit();
+                    formResetPass.passOld = MD5(formResetPass.passOld).toString();
+                    formResetPass.$nextTick(function() {
+                        formResetPass.$el.submit();
+                    });
                 }
             })
             .catch(function(error) {

@@ -16,7 +16,7 @@ const tools = require('../module/tools');
 
 const urlCollect = `${urlPrefix}/fn/project/collect`;
 const urlUnCollect = `${urlPrefix}/fn/project/uncollect`;
-const urlOperate = `${urlPrefix}/fn/admin/project/operate`;
+const urlOperate = `${urlPrefix}/fn/user/project/operate`;
 
 const urlLoadProjectMap = {
 	'post': `${urlPrefix}/fn/get/project/myPost`,
@@ -186,8 +186,8 @@ let projectBox = new Vue({
                 body: JSON.stringify({
                     "operation": 'delete',
                     "proId": project.proId,
-                    "rejectReason": ''
-                })
+                }),
+                credentials: 'same-origin'
 			})
 			.then(response => response.json())
 			.then(data => {
