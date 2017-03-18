@@ -26,6 +26,8 @@ let formLogin = new Vue({
 
     methods : {
         validUser: function(params) {
+            let self = this;
+
             fetch(urlValidUser, {
                 method: 'POST',
                 headers: {
@@ -33,14 +35,14 @@ let formLogin = new Vue({
                 },
                 credentials: 'same-origin',
                 body: tools.obj2form({
-                    username: this.username,
-                    password: this.md5Pass
+                    username: self.username,
+                    password: self.md5Pass
                 })
             })
             .then(response => response.json())
             .then(function(data) {
                 if (data.code === 'ok') {
-                    this.password = MD5(this.password);
+                    self.password = MD5(self.password).toString();
                     formLogin.$el.submit();
                 } else {
                     formLogin.hasError = true;
