@@ -17,9 +17,9 @@ window.addEventListener('load', function() {
 	let inputError = {
 		'name': false,
 		'apply': false,
-		'profe': false,
+		'major': false,
 		'phone': false,
-		'stunum': false
+		'stu_num': false
 	};
 
 	let appToJoin = new Vue({
@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 					if (data.code === 'ok') {
 						self.editIsSucc = true;
 						setTimeout(() => {
-							window.location.href = `${urlPrefix}/project?uid=${self.user.id}&proId=${self.project.proId}`;
+							window.location.href = `${urlPrefix}/project?uid=${self.user.id}&proId=${self.project.id}`;
 						}, 500);
 					} else {
 						self.editFail = true;
@@ -92,7 +92,7 @@ window.addEventListener('load', function() {
 					name = target.name,
 					value = target.value;
 
-				if (name === 'name' || name === 'apply' || name === 'profe' || name === 'phone' || name === 'stunum') {
+				if (name === 'name' || name === 'apply' || name === 'major' || name === 'phone' || name === 'stu_num') {
 					if (value === '') {
 						this.inputError[name] = true;
 					} else {

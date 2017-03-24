@@ -59,7 +59,7 @@ Vue.component('tic-project', {
 			this.$emit('collect', params.projectIndex);
 			let self = this;
 
-			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.proId}`;
+			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.id}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {
@@ -81,7 +81,7 @@ Vue.component('tic-project', {
 
 			let self = this;
 
-			let url = `${urlUnCollect}?userid=${params.userid}&proId=${this.project.proId}`;
+			let url = `${urlUnCollect}?userid=${params.userid}&proId=${this.project.id}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {
@@ -108,9 +108,9 @@ Vue.component('tic-project', {
 
 	computed: {
 		projectStatu: function() {
-			if (this.project.statu) {
-				return this.project.statu === 'pass' ? '审核已通过~'
-					: this.project.statu === 'reject' ? '审核被拒' : '审核中...';
+			if (this.project.status) {
+				return this.project.status == 1 ? '审核已通过~'
+					: this.project.status == 2 ? '审核被拒' : '审核中...';
 			}
 			return '';
 		},
@@ -187,7 +187,7 @@ let projectBox = new Vue({
 				},
                 body: JSON.stringify({
                     "operation": 'delete',
-                    "proId": project.proId,
+                    "id": project.id,
                 }),
                 credentials: 'same-origin'
 			})

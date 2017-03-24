@@ -25,7 +25,7 @@
 					<form method="POST" class="tic-form" id="formProfile">
 						<p class="tic-error-tip" v-show="hasError">{{errorMsg}}</p>
 						<div class="tic-tr-two">
-							<span class="tic-td-label">昵称</span>
+							<span class="tic-td-label">用户名</span>
 							<span class="tic-td-content" v-show="!isEditing">{{user.username}}</span>
 							<span class="tic-td-content" v-show="isEditing">
 								<input type="text" name="username" v-model="user.username" />
@@ -33,9 +33,9 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">姓名</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.name}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.realname}}</span>
 							<span class="tic-td-content" v-show="isEditing">
-								<input type="text" name="name" v-model="user.name" />
+								<input type="text" name="realname" v-model="user.realname" />
 							</span>
 						</div>
 						<div class="tic-tr-two">
@@ -52,7 +52,7 @@
 								<div class="weui-cells weui-cells_checkbox">
 								    <label class="weui-cell weui-check__label" for="radioBoy">
 								        <div class="weui-cell__hd">
-								            <input type="radio" value="boy" class="weui-check" id="radioBoy" name="sex" v-model="user.sex">
+								            <input type="radio" value="M" class="weui-check" id="radioBoy" name="gender" v-model="user.gender">
 								            <i class="weui-icon-checked"></i>
 								        </div>
 								        <div class="weui-cell__bd">
@@ -61,7 +61,7 @@
 								    </label>
 								    <label class="weui-cell weui-check__label" for="radioGirl">
 								        <div class="weui-cell__hd">
-								            <input type="radio" value="girl" name="sex" id="radioGirl" class="weui-check" v-model="user.sex">
+								            <input type="radio" value="F" name="gender" id="radioGirl" class="weui-check" v-model="user.gender">
 								            <i class="weui-icon-checked"></i>
 								        </div>
 								        <div class="weui-cell__bd">
@@ -73,9 +73,9 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">专业</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.profe}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.major}}</span>
 							<span class="tic-td-content" v-show="isEditing">
-								<input type="text" name="profe" v-model="user.profe" />
+								<input type="text" name="major" v-model="user.major" />
 							</span>
 						</div>
 						<div class="tic-tr-two">
@@ -87,27 +87,27 @@
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">学号</span>
-							<span class="tic-td-content" v-show="!isEditing">{{user.stunum}}</span>
+							<span class="tic-td-content" v-show="!isEditing">{{user.stuNum}}</span>
 							<span class="tic-td-content" v-show="isEditing">
-								<input type="text" name="stunum" v-model="user.stunum" />
+								<input type="text" name="stuNum" v-model="user.stuNum" />
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">个人能力</span>
 							<span class="tic-td-content" v-show="!isEditing">
-								<multiline-content :content="user.profile"></multiline-content>
+								<multiline-content :content="user.skill"></multiline-content>
 							</span>
 							<span class="tic-td-content" v-show="isEditing">
-								<textarea name="profile" v-model="user.profile"></textarea>
+								<textarea name="skill" v-model="user.skill"></textarea>
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">项目经历</span>
 							<span class="tic-td-content" v-show="!isEditing">
-								<multiline-content :content="user.pexperice"></multiline-content>
+								<multiline-content :content="user.experience"></multiline-content>
 							</span>
 							<span class="tic-td-content" v-show="isEditing">
-								<textarea name="pexperice" v-model="user.pexperice"></textarea>
+								<textarea name="experience" v-model="user.experience"></textarea>
 							</span>
 						</div>
 						<input type="hidden" name="id" value="<c:out value="${user.id}" />">
@@ -151,17 +151,17 @@
 			var userInfo = {
 				username: "<c:out value="${user.username}" />",
 				email: "<c:out value="${user.email}" />",
-				name: "<c:out value="${user.name}" />",
-				sex: "<c:out value="${user.sex}" />",
-				profe: "<c:out value="${user.profe}" />",
+				realname: "<c:out value="${user.realname}" />",
+				gender: "<c:out value="${user.gender}" />",
+				major: "<c:out value="${user.major}" />",
 				phone: "<c:out value="${user.phone}" />",
-				stunum: "<c:out value="${user.stunum}" />",
-				profile: getMultiline(function() {/*
-					<c:out value="${user.profile}" />
+				stuNum: "<c:out value="${user.stuNum}" />",
+				skill: getMultiline(function() {/*
+					<c:out value="${user.skill}" />
 				*/
 				}),
-				pexperice: getMultiline(function() {/*
-					<c:out value="${user.pexperice}" />
+				experience: getMultiline(function() {/*
+					<c:out value="${user.experience}" />
 				*/
 				})
 			};

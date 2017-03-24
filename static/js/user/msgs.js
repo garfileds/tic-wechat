@@ -32,12 +32,12 @@ Vue.component('tic-msg', {
 
 	methods: {
 		readMsg: function(params) {
-			var jumpUrl;
+			var jumpUrl, self;
 
 			if (this.msg.type === '') {
-				jumpUrl = `${urlProjectSign}?uid=${this.msg.uid}&proId=${this.msg.proId}`;
+				jumpUrl = `${urlProjectSign}?uid=${this.msg.userId}&proId=${this.msg.proId}`;
 			} else {
-				jumpUrl = `${urlProjectPost}?uid=${this.msg.uid}&proId=${this.msg.proId}`;
+				jumpUrl = `${urlProjectPost}?uid=${this.msg.userId}&proId=${this.msg.proId}`;
 			}
 
 			if (this.msg.read) {
@@ -47,7 +47,7 @@ Vue.component('tic-msg', {
 			//先假装信息已读，若通信失败回滚
 			this.$emit('read', params.msgIndex);
 
-			let self = this;
+			self = this;
 
 			fetch(urlReadMsg, {
 				method: 'POST',
@@ -57,7 +57,7 @@ Vue.component('tic-msg', {
 				},
 				credentials: 'same-origin',
 				body: JSON.stringify({
-					mid: [self.msg.mid]
+					mid: [self.msg.id]
 				})
 			})
 			.then(response => response.json())
@@ -185,7 +185,7 @@ function loadMore() {
 			return !msg.read;
 		});
 		newUnreadMsg = newUnreadMsg.map(function(msg) {
-			return msg.mid;
+			return msg.id;
 		});
 
 		self.msgsUnread = self.msgsUnread.concat(newUnreadMsg);

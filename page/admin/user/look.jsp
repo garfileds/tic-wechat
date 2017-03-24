@@ -19,7 +19,7 @@
                             <tr>
                                 <th></th>
                                 <th>编号</th>
-                                <th>昵称</th>
+                                <th>用户名</th>
                                 <th>姓名</th>
                                 <th>邮箱</th>
                             </tr>
@@ -87,7 +87,7 @@
                     </td>
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
-                    <td>{{user.name}}</td>
+                    <td>{{user.real}}</td>
                     <td>{{user.email}}</td>
                 </tr>
             </transition>

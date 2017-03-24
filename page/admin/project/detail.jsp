@@ -7,7 +7,7 @@
 		<header>
 			<div class="tic-header-three">
 				<div class="tic-header-three-center">
-			        <p class="tic-title-main"><c:out value="${project.proname}" /></p>
+			        <p class="tic-title-main"><c:out value="${project.name}" /></p>
 			        <p class="tic-title-secondary">
 			            标签：
 			            <c:forEach items="${project.tag}" var="item">
@@ -24,7 +24,7 @@
 
 		<div id="operationArea">
 			<c:choose>
-				<c:when test="${project.statu != 'check'}">
+				<c:when test="${project.status != 0}">
 					<div class="ui buttons tic-buttons" id="projectOperation">
 						<button class="ui red button" v-tap="{methods: deleteProject}">删除</button>
 					</div>
@@ -59,7 +59,7 @@
 		    <div class="weui-toast">
 		        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
 		        <c:choose>
-		        	<c:when test="${project.statu != 'check'}">
+		        	<c:when test="${project.status != 0}">
 		        		<p class="weui-toast__content">已删除</p>
 		        	</c:when>
 		        	<c:otherwise>
@@ -87,18 +87,18 @@
 		</script>
 		<script type="text/javascript">
 		    var projectInfo = {
-		        "proId": "<c:out value="${project.proId}" />",
-		        "proname": "<c:out value="${project.proname}" />",
-				"promassage": getMultiline(function() {/*
-					<c:out value="${project.promassage}" />
+		        "id": "<c:out value="${project.id}" />",
+		        "name": "<c:out value="${project.name}" />",
+				"content": getMultiline(function() {/*
+					<c:out value="${project.content}" />
 				*/
 				}),
-				"prowant": getMultiline(function() {/*
-					<c:out value="${project.prowant}" />
+				"recruit": getMultiline(function() {/*
+					<c:out value="${project.recruit}" />
 				*/
 				}),
-				"concat": getMultiline(function() {/*
-					<c:out value="${project.concat}" />
+				"contact": getMultiline(function() {/*
+					<c:out value="${project.contact}" />
 				*/
 				})
 		    };

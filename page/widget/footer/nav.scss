@@ -1,4 +1,5 @@
 $grey: #ccc4c4;
+$blue: #1e90ff;
 
 .tic-nav {
 	display: flex;
@@ -30,7 +31,7 @@ $grey: #ccc4c4;
 			}
 
 			&.selected > p {
-				color: #117ee8;
+				color: $blue;
 			}
 		}
 	}

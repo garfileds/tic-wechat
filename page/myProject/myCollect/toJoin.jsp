@@ -22,63 +22,31 @@
 						<div class="tic-tr-two">
 							<span class="tic-td-label">姓名</span>
 							<span class="tic-td-content">
-								<!-- <input type="text" name="name" v-model="user.name"
-								 
-								 :class="{'tic-error-input': inputError['name']}" /> -->
-								{{user.name}}
+								{{user.realname}}
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">性别</span>
 							<span class="tic-td-content">
-								<!-- <div class="weui-cells weui-cells_checkbox tic-cells-nomargin">
-								    <label class="weui-cell weui-check__label" for="radioBoy">
-								        <div class="weui-cell__hd">
-								            <input type="radio" value="boy" class="weui-check" id="radioBoy" name="sex" v-model="user.sex">
-								            <i class="weui-icon-checked"></i>
-								        </div>
-								        <div class="weui-cell__bd">
-								            <p>男</p>
-								        </div>
-								    </label>
-								    <label class="weui-cell weui-check__label" for="radioGirl">
-								        <div class="weui-cell__hd">
-								            <input type="radio" value="girl" name="sex" id="radioGirl" class="weui-check" v-model="user.sex">
-								            <i class="weui-icon-checked"></i>
-								        </div>
-								        <div class="weui-cell__bd">
-								            <p>女</p>
-								        </div>
-								    </label>
-								</div> -->
-								{{user.sex === 'boy' ? '男' : '女'}}
+								{{user.gender === 'M' ? '男' : '女'}}
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">专业</span>
 							<span class="tic-td-content">
-								<!-- <input type="text" name="profe" v-model="user.profe"
-								 
-								 :class="{'tic-error-input': inputError['profe']}" /> -->
-								 {{user.profe}}
+								 {{user.major}}
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">手机</span>
 							<span class="tic-td-content">
-								<!-- <input type="text" name="phone" v-model="user.phone"
-								 
-								 :class="{'tic-error-input': inputError['phone']}" /> -->
 								 {{user.phone}}
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">学号</span>
 							<span class="tic-td-content">
-								<!-- <input type="text" name="stunum" v-model="user.stunum"
-								  
-								 :class="{'tic-error-input': inputError['stunum']}" /> -->
-								 {{user.stunum}}
+								 {{user.stuNum}}
 							</span>
 						</div>
 						<div class="tic-tr-two">
@@ -92,17 +60,17 @@
 						<div class="tic-tr-two">
 							<span class="tic-td-label">个人能力(选填)</span>
 							<span class="tic-td-content">
-								<textarea name="profile" v-model="user.profile"></textarea>
+								<textarea name="skill" v-model="user.skill"></textarea>
 							</span>
 						</div>
 						<div class="tic-tr-two">
 							<span class="tic-td-label">项目经历(选填)</span>
 							<span class="tic-td-content">
-								<textarea name="pexperice" v-model="user.pexperice"></textarea>
+								<textarea name="experience" v-model="user.experience"></textarea>
 							</span>
 						</div>
-						<input type="hidden" name="proId" value="<c:out value='${project.proId}' />">
-						<input type="hidden" name="uid" :value="user.id">
+						<input type="hidden" name="proId" value="<c:out value='${project.id}' />">
+						<input type="hidden" name="userId" :value="user.id">
 						<button class="weui-btn weui-btn_primary" id="btnConfirm" v-tap.prevent="{methods: joinProject}">确认加入</button>
 					</form>
 				</div>
@@ -144,20 +112,23 @@
 				id: "<c:out value="${user.id}" />",
 				username: "<c:out value="${user.username}" />",
 				email: "<c:out value="${user.email}" />",
-				name: "<c:out value="${user.name}" />",
-				sex: "<c:out value="${user.sex}" />",
-				profe: "<c:out value="${user.profe}" />",
+				realname: "<c:out value="${user.realname}" />",
+				gender: "<c:out value="${user.gender}" />",
 				phone: "<c:out value="${user.phone}" />",
-				stunum: "<c:out value="${user.stunum}" />",
-				profile: "<c:out value="${user.profile}" />",
-				pexperice: getMultiline(function() {/*
-					<c:out value="${user.pexperice}" />
+				stuNum: "<c:out value="${user.stuNum}" />",
+				major: "<c:out value="${user.major}" />",
+				skill: getMultiline(function() {/*
+					<c:out value="${user.skill}" />
+				*/
+				}),
+				experience: getMultiline(function() {/*
+					<c:out value="${user.experience}" />
 				*/
 				})
 			};
 			var projectInfo = {
-		        "proId": '<c:out value="${project.proId}" />',
-		        "proname": '<c:out value="${project.proname}" />',
+		        "id": '<c:out value="${project.id}" />',
+		        "name": '<c:out value="${project.name}" />',
 		        "isCollected": <c:out value="${project.isCollected}" />
 		    };
 		</script>

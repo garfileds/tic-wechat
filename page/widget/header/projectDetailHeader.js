@@ -23,7 +23,7 @@ window.addEventListener('load', function() {
 				this.project.isCollected = true;
 				let self = this;
 
-				let url = `${urlCollect}?userid=${this.user.id}&proId=${this.project.proId}`;
+				let url = `${urlCollect}?userid=${this.user.id}&proId=${this.project.id}`;
 				fetch(url, {
 					method: 'GET',
 					headers: {
@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
 
 				let self = this;
 
-				let url = `${urlUnCollect}?userid=${this.user.id}&proId=${this.project.proId}`;
+				let url = `${urlUnCollect}?userid=${this.user.id}&proId=${this.project.id}`;
 				fetch(url, {
 					method: 'GET',
 					headers: {

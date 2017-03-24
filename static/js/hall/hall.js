@@ -48,9 +48,9 @@ Vue.component('tic-project', {
 	computed: {
 		projectDetailHref: function() {
 			if (this.project.userid == this.userid) {
-				return `${urlPrefix}/myProject/myPost/detail?proId=${this.project.proId}`;
+				return `${urlPrefix}/myProject/myPost/detail?proId=${this.project.id}`;
 			} else {
-				return `${urlPrefix}/project?proId=${this.project.proId}&uid=${this.userid}`;
+				return `${urlPrefix}/project?proId=${this.project.id}&uid=${this.userid}`;
 			}
 		}
 	},
@@ -62,7 +62,7 @@ Vue.component('tic-project', {
 			// this.project.isCollected = true;
 			let self = this;
 
-			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.proId}`;
+			let url = `${urlCollect}?userid=${params.userid}&proId=${this.project.id}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {
@@ -86,7 +86,7 @@ Vue.component('tic-project', {
 
 			let self = this;
 
-			let url = `${urlUnCollect}?userid=${params.userid}&proId=${this.project.proId}`;
+			let url = `${urlUnCollect}?userid=${params.userid}&proId=${this.project.id}`;
 			fetch(url, {
 				method: 'GET',
 				headers: {

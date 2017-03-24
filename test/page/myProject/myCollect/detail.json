@@ -12,7 +12,7 @@
         "statu": "pass"
 	},
 
-	"userIsJoined": false,
+	"userIsJoined": true,
 
 	"projectCreator": {
 		"id": "u001",

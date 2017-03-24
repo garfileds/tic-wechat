@@ -84,10 +84,10 @@ let appPostProject = new Vue({
 		postIsFail: false,
 		postIsSucc: false,
 
-		title: '',
-		promassage: '',
-		prowant: '',
-		concat: '',
+		name: '',
+		content: '',
+		recruit: '',
+		contact: '',
 		tagSelected: '',
 
 		validRule: {
@@ -95,19 +95,19 @@ let appPostProject = new Vue({
 				pattern: 'required',
 				errorMsg: '请至少选择一个标签'
 			}],
-			title: [{
+			name: [{
 				pattern: /^.{2,}$/,
 				errorMsg: '项目名称至少2个字'
 			}],
-			promassage:[{
+			content:[{
 				pattern: /^(.|\n|\t){10,}$/m,
 				errorMsg: '项目详情至少10个字'
 			}],
-			prowant: [{
+			recruit: [{
 				pattern: /^(.|\n|\t){6,}$/m,
 				errorMsg: '招聘详情至少6个字'
 			}],
-            concat: [{
+            contact: [{
 			    pattern: 'required',
                 errorMsg: '联系方式没有填'
             }]
@@ -173,7 +173,8 @@ let appPostProject = new Vue({
 			fetch(urlPostProject, {
 				method: 'POST',
 				headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                    'Accept': 'application/json'
                 },
                 credentials: 'same-origin',
                 body: tools.formSerialize('#formPostProject')

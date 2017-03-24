@@ -12,15 +12,15 @@
         </div>
         <div class="tic-article-header-center">
             <p class="tic-title-strong"><c:out value="${projectCreator.username}" /></p>
-            <p class="tic-title-secondary"><c:out value="${project.date}" /></p>
+            <p class="tic-title-secondary"><c:out value="${project.creationDate}" /></p>
         </div>
 
-        <c:if test="${project.statu != null}">
+        <c:if test="${project.status != null}">
             <c:choose>
-                <c:when test="${project.statu == 'pass'}">
+                <c:when test="${project.status == 1}">
                     <c:set var="projectStatu" value="" />
                 </c:when>
-                <c:when test="${project.statu == 'reject'}">
+                <c:when test="${project.status == 2}">
                     <c:set var="projectStatu" value="状态：审核被拒" />
                 </c:when>
                 <c:otherwise>
@@ -31,17 +31,17 @@
         </c:if>
     </div>
     <section class="tic-article-section">
-        <multiline-content :content="project.promassage"></multiline-content>
+        <multiline-content :content="project.content"></multiline-content>
     </section>
     <hr>
     <section class="tic-article-section">
         <p class="tic-title-strong">招聘详情</p>
-        <multiline-content :content="project.prowant"></multiline-content>
+        <multiline-content :content="project.recruit"></multiline-content>
     </section>
     <hr/>
     <section class="tic-article-section">
         <p class="tic-title-strong">联系方式</p>
-        <multiline-content :content="project.concat"></multiline-content>
+        <multiline-content :content="project.contact"></multiline-content>
     </section>
 </article>
 

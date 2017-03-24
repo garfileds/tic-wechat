@@ -1,3 +1,5 @@
+$blue: #1e90ff;
+
 .tic-detail-footer, .tic-detail-footer2 {
 	position: fixed;
 	bottom: 0;
@@ -16,8 +18,16 @@
 
 		border-right: solid 1px #ccc4c4;
 
+		& > span {
+			color: $blue;
+			font-size: 1.8em;
+			vertical-align: middle;
+			margin-left: .5em;
+		}
+
 		& > img {
 			max-width: 100%;
+			vertical-align: middle;
 		}
 	}
 
