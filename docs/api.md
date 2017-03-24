@@ -658,7 +658,7 @@
      - request `[GET]`
      ```
      {
-        id: 'u001'
+        userId: 'u001'
      }
      ```
      - response `[JSON]`

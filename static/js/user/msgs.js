@@ -159,12 +159,12 @@ function loadMore() {
 	if (this.noMore) {
 		return;
 	}
+    var self = this;
 
-	let url = `${urlLoadMoreMsg}?uid=${this.user.id}&pageNum=${pageNum}&size=${pageSize}`;
+    let url = `${urlLoadMoreMsg}?uid=${this.user.id}&pageNum=${pageNum}&size=${pageSize}`;
 
 	this.busy = true;
 	this.isLoading = true;
-	self = this;
 
 	fetch(url, {
 		method: 'GET',

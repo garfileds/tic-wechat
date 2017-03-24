@@ -1,7 +1,6 @@
 {
 	"user": {
-		"userid": "u001",
-		"username": "adoug",
-		"hasMsg": true
+		"id": "u001",
+		"username": "adoug"
 	}
 }
