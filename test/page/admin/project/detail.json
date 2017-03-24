@@ -1,14 +1,14 @@
 {
 	"project": {
-		"proname": "时间典当铺",
+		"name": "时间典当铺",
 		"tag": ["Web", "情感"],
-		"proId": "p001",
-		"prowant": "产品经理：2名  UI设计：1名 前端：1名",
-		"promassage": "这里就是项目的详情了，文字就不限量了，感觉应该加上可以添加图片的功能，这里的文字颜
+		"id": "p001",
+		"recruit": "产品经理：2名  UI设计：1名 前端：1名",
+		"content": "这里就是项目的详情了，文字就不限量了，感觉应该加上可以添加图片的功能，这里的文字颜
         色是#222222，字号15。",
-        "concat": "邮箱：yuqingyaa@163.com\n如有疑问，敬请用以上方式咨询~",
-        "date": "2016.01.29",
-        "statu": "check"
+        "contact": "邮箱：yuqingyaa@163.com\n如有疑问，敬请用以上方式咨询~",
+        "creationDate": "2016.01.29",
+        "status": 0
 	},
 
 	"projectCreator": {

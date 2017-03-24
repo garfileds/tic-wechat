@@ -4,12 +4,12 @@
 	"hasMore": false,
 
 	"projects": [{
-		"proId": "p001",
-		"proname": "SSR召唤符画法",
+		"id": "p001",
+		"name": "SSR召唤符画法",
 		"username": "adoug"
 	}, {
-		"proId": "p002",
-		"proname": "tic项目池",
+		"id": "p002",
+		"name": "tic项目池",
 		"username": "adoug"
 	}]
 }

@@ -3,12 +3,12 @@
     		"id": "u001",
     		"username": "adoug",
     		"email": "942434869@qq.com",
-    		"name": "张骥",
-			"sex": "boy",
-			"profe": "软件工程",
+    		"realname": "张骥",
+			"gender": "boy",
+			"major": "软件工程",
 			"phone": "15029679086",
-			"stunum": "1603121451",
-			"profile": "ps,c++\nui设计",
-			"pexperice": "人脸识别系统\n心电认证"
+			"stuNum": "1603121451",
+			"skill": "ps,c++\nui设计",
+			"experience": "人脸识别系统\n心电认证"
     	}
     }

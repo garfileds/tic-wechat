@@ -6,18 +6,18 @@
         "msgs": [{
 		"type": "join",
     "read": false,
-		"uid": 1,
-		"mid": 1,
+		"userId": 1,
+		"id": 1,
     "proId": 1,
-		"massage": "有人报名了您的交友app！！！！！",
-		"existDate": "10分钟前"}, {
+		"content": "有人报名了您的交友app！！！！！",
+		"creationDate": "10分钟前"}, {
     "type": "post",
     "read": "true",
-    "uid": 2,
-    "mid": 2,
+    "userId": 2,
+    "id": 2,
     "proId": 2,
-    "massage": "你已成功发布adoug的SSR画符app，请等待审核，祝你顺利~",
-    "existDate": "10分钟前"}]
+    "content": "你已成功发布adoug的SSR画符app，请等待审核，祝你顺利~",
+    "creationDate": "10分钟前"}]
 }
 
 <%

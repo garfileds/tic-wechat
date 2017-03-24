@@ -6,12 +6,12 @@
 	"users": [{
 		"id": "u001",
 		"username": "adoug",
-		"name": "陈智仁",
+		"realname": "陈智仁",
 		"email": "942434869@qq.com"
 	}, {
 		"id": "u002",
 		"username": "garfiled",
-		"name": "加菲",
+		"realname": "加菲",
 		"email": "yuqingya101@163.com"
 	}]
 }

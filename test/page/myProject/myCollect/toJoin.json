@@ -1,22 +1,22 @@
 {
 	"project": {
-		"proname": "时间典当铺",
+		"name": "时间典当铺",
 		"tag": ["Web", "情感"],
 		"isCollected": true,
-		"proId": "p001",
-        "date": "2016.01.28"
+		"id": "p001",
+        "creationDate": "2016.01.28"
 	},
 
     "user": {
     	"id": "u001",
     	"username": "adoug",
     	"email": "942434869@qq.com",
-    	"name": "张骥",
-		"sex": "boy",
-		"profe": "软件工程",
+    	"realname": "张骥",
+		"gender": "boy",
+		"major": "软件工程",
 		"phone": "15029679086",
-		"stunum": "1603121451",
-		"profile": "ps,c++,ui设计",
-		"pexperice": "人脸识别系统"
+		"stuNum": "1603121451",
+		"skill": "ps,c++,ui设计",
+		"experience": "人脸识别系统"
     }
 }
