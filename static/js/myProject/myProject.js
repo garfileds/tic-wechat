@@ -116,17 +116,11 @@ Vue.component('tic-project', {
 		},
 
 		projectDetailLink: function() {
-			if (this.projecttype === 'post') {
-				return `${urlPrefix}/myProject/myPost/detail`;
-			}
-
-			if (this.projecttype === 'collect') {
-				return `${urlPrefix}/project`;
-			}
-
-			if (this.projecttype === 'join') {
-				return `${urlPrefix}/project`;
-			}
+			if (this.project.userId == this.userid) {
+                return `${urlPrefix}/myProject/myPost/detail`;
+            } else {
+                return `${urlPrefix}/project`;
+            }
 		}
 	}
 });

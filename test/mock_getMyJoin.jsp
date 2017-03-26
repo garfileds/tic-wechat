@@ -23,7 +23,8 @@
 		"name": "时间典当铺APP",
 		"isCollected": false,
 		"username": "adoug",
-		"creationDate": "2016.02.05",
+		"userId": "u010",
+	"creationDate": "2016.02.05",
 		"tag": ["Web", "情感"],
 		"content": "我祈祷拥有一颗透明的心灵/和会流泪的眼睛/给我再去相信的勇气/oh越过谎言去拥抱你"
 	}, {
@@ -31,6 +32,7 @@
 		"name": "时间典当铺APP",
 		"isCollected": false,
 		"username": "adoug",
+	"userId": "u010",
 		"creationDate": "2016.02.05",
 		"tag": ["Web", "情感"],
 		"content": "我祈祷拥有一颗透明的心灵/和会流泪的眼睛/给我再去相信的勇气/oh越过谎言去拥抱你"
