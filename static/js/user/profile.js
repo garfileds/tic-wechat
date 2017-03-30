@@ -48,7 +48,8 @@ let appProfile = new Vue({
 	el: '#appProfile',
 	data: {
 		isEditing: false,
-		user: userInfo,
+		user: tools.copyObj(userInfo),
+		updateValue: {},
 
 		editFail: false,
 		editIsSucc: false,
@@ -67,18 +68,29 @@ let appProfile = new Vue({
         }
 	},
 	methods: {
-		showEditer: function(params) {
+		showEditer: function() {
 			this.isEditing = true;
 		},
-		editProfile: function(params) {
+		editProfile: function() {
 			var promiseValidProfile;
 
-			promiseValidProfile = this.validProfile();
+            this.updateValue = tools.diffObj(userInfo, this.user);
+			if (!this.validProfile()) {
+                window.scroll(0, 0);
+                return;
+			}
 
-			if (this.hasError) {
-				window.scroll(0, 0);
+            if (tools.isEmpty(this.updateValue)) {
+                appProfile.editIsSucc = true;
+                setTimeout(() => {
+                    appProfile.isEditing = false;
+                    appProfile.editIsSucc = false;
+                }, 500);
+
 				return;
 			}
+
+            promiseValidProfile = this.validProfilePromise();
 
 			promiseValidProfile.then(() => {
 				this.updateProfile();
@@ -107,7 +119,7 @@ let appProfile = new Vue({
                     'Accept': 'application/json'
                 },
                 credentials: 'same-origin',
-                body: tools.formSerialize('#formProfile')
+                body: tools.obj2form(this.updateValue)
             })
             .then(response => response.json())
             .then(function(data) {
@@ -126,24 +138,27 @@ let appProfile = new Vue({
                 console.log('request failed', error);
             });
         },
-		
-		validProfile: function () {
-			if (!this.user.username) {
-				this.errorMsg = '昵称不可为空哦'
-				this.usernameNullErr = true;
-				return false;
-			} else {
-				this.usernameNullErr = false;
-			}
 
-			return fetch(urlValidProfile, {
+		validProfile: function () {
+            if (!this.user.username) {
+                this.errorMsg = '昵称不可为空哦';
+                this.usernameNullErr = true;
+                return false;
+            } else {
+                this.usernameNullErr = false;
+                return true;
+            }
+        },
+		
+		validProfilePromise: function () {
+            return fetch(urlValidProfile, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
                     'Accept': 'application/json'
                 },
                 credentials: 'same-origin',
-                body: tools.formSerialize('#formProfile')
+                body: tools.obj2form(this.updateValue)
 			})
 			.then(response => response.json())
 			.then(data => {
@@ -162,3 +177,6 @@ let appProfile = new Vue({
 		'multiline-content': multilineContent
 	}
 });
+
+
+
