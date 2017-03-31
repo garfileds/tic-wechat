@@ -16,6 +16,7 @@ function serialize(form) {
         opValue; //select中option的值
     //遍历每一个表单字段
     var i, j;
+    var option;
     for (i = 0; i < len; i++) {
         field = form.elements[i];
         switch (field.type) {
