@@ -3,8 +3,8 @@ fis.require('jello')(fis);
 /****************环境变量*****************/
 fis
   // 排除指定目录
-  .set('project.files', ['**', '.**', '.**/**'])
-  .set('project.ignore', ['prod-tic/**', 'tic/**', '.idea/**', 'dev/**', 'prod/**', 'node_modules/**', '.gitignore', '**/_*.scss', '.docs/**', '.dist/**', '.git/**', '.svn/**', 'fis-conf.js', 'WEB-INF/**'])
+  .set('project.files', ['/docs/**', '/static/**', '/page/**', '/test/**', '/map.json', 'server.conf'])
+  .set('project.ignore', ['/dev/**', 'prod/**', 'tic/**', 'prod-tic/**'])
   .set('project.fileType.text', 'es');
 
 
@@ -77,6 +77,7 @@ fis.media('prod')
 
       'pkg/js/module.js': [
         '/static/js/hall/hall.js:deps',
+        '/static/js/user/user.js:deps',
         '/static/js/user/login.js:deps',
         '/static/js/user/msgs.js:deps',
         '/static/js/user/profile.js:deps',
@@ -112,6 +113,10 @@ fis.media('prod')
         '/static/js/user/resetPass.js'
       ],
 
+      'pkg/js/user/center.js': [
+        '/static/js/user/center.js'
+      ],
+
       'pkg/myProject/myProject.js': [
         '/static/myProject/myProject.js'
       ],
@@ -135,17 +140,17 @@ fis.media('prod')
       ]
     })
   })
-  .match('*.{js,jsx,ts,tsx,es6,es}', {
-    useHash: true,
+  .match('/pkg/**.{js, es}', {
+    useHash: true/*,
 
-    optimizer: fis.plugin('uglify-js')
+     optimizer: fis.plugin('uglify-js')*/
   })
-  .match('*.{scss,sass,less,css}', {
-    useHash: true,
-    
-    optimizer: fis.plugin('clean-css',{
-        //option
-    })
+  .match('/pkg/**.{scss ,css}', {
+    useHash: true/*,
+
+     optimizer: fis.plugin('clean-css',{
+     //option
+     })*/
   });
 
 fis.media('prod-tic')
@@ -168,6 +173,7 @@ fis.media('prod-tic')
         '/static/js/user/profile.js:deps',
         '/static/js/user/register.js:deps',
         '/static/js/user/resetPass.js:deps',
+        '/static/js/user/center.js:deps',
         '/static/myProject/myProject.js:deps',
         '/static/myProject/postProject.js:deps',
         '/static/myProject/myPost/editDetail.js:deps',
@@ -198,6 +204,10 @@ fis.media('prod-tic')
         '/static/js/user/resetPass.js'
       ],
 
+      'pkg/js/user/center.js': [
+        '/static/js/user/center.js'
+      ],
+
       'pkg/myProject/myProject.js': [
         '/static/myProject/myProject.js'
       ],
@@ -221,17 +231,17 @@ fis.media('prod-tic')
       ]
     })
   })
-  .match('*.{js,jsx,ts,tsx,es6,es}', {
-    useHash: true,
+  .match('/pkg/**.{js, es}', {
+    useHash: true/*,
 
-    optimizer: fis.plugin('uglify-js')
+    optimizer: fis.plugin('uglify-js')*/
   })
-  .match('*.{scss,sass,less,css}', {
-    useHash: true,
+  .match('/pkg/**.{scss ,css}', {
+    useHash: true/*,
     
     optimizer: fis.plugin('clean-css',{
         //option
-    })
+    })*/
   })
   .match('**.{scss, css, js, png, jpeg, jpg}', {
     url: '/xdtic$0'

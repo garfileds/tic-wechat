@@ -80,7 +80,7 @@ let appProfile = new Vue({
                 return;
 			}
 
-            if (tools.isEmpty(this.updateValue)) {
+      /*      if (tools.isEmpty(this.updateValue)) {
                 appProfile.editIsSucc = true;
                 setTimeout(() => {
                     appProfile.isEditing = false;
@@ -88,7 +88,7 @@ let appProfile = new Vue({
                 }, 500);
 
 				return;
-			}
+			}*/
 
             promiseValidProfile = this.validProfilePromise();
 
@@ -119,7 +119,7 @@ let appProfile = new Vue({
                     'Accept': 'application/json'
                 },
                 credentials: 'same-origin',
-                body: tools.obj2form(this.updateValue)
+                body: tools.obj2form(this.user)
             })
             .then(response => response.json())
             .then(function(data) {
@@ -158,7 +158,7 @@ let appProfile = new Vue({
                     'Accept': 'application/json'
                 },
                 credentials: 'same-origin',
-                body: tools.obj2form(this.updateValue)
+                body: tools.obj2form(this.user)
 			})
 			.then(response => response.json())
 			.then(data => {
