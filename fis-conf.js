@@ -85,6 +85,7 @@ fis.media('prod')
         '/static/js/user/resetPass.js:deps',
         '/static/myProject/myProject.js:deps',
         '/static/myProject/postProject.js:deps',
+        '/static/myProject/myPost/signDetail.js:deps',
         '/static/myProject/myPost/editDetail.js:deps',
         '/static/myProject/myCollect/toJoin.js:deps'
       ],
@@ -127,6 +128,10 @@ fis.media('prod')
 
       'pkg/myProject/myPost/editDetail.js': [
         '/static/myProject/myPost/editDetail.js'
+      ],
+
+      'pkg/myProject/myPost/signDetail.js': [
+        '/static/myProject/myPost/signDetail.js'
       ],
 
       'pkg/myProject/myCollect/toJoin.js': [
