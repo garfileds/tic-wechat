@@ -8,7 +8,6 @@
 
 const infiniteScroll = require('vue-infinite-scroll').infiniteScroll;
 
-let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
 const urlLoadMoreMsg = `${urlPrefix}/fn/get/msg`;
@@ -170,7 +169,8 @@ function loadMore() {
 		method: 'GET',
 		headers: {
 			'Accept': 'application/json'
-		}
+		},
+    credentials: 'same-origin'
 	})
 	.then(response => response.json())
 	.then(function(data) {

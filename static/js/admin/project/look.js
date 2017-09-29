@@ -94,7 +94,8 @@ function loadMore() {
 
 	this.busy = true;
 	this.isLoading = true;
-	self = this;
+
+	let self = this;
 
 	fetch(url, {
 		method: 'GET',

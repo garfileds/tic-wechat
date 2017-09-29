@@ -9,7 +9,6 @@
 const infiniteScroll = require('vue-infinite-scroll');
 Vue.use(infiniteScroll);
 
-const Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
 const tools = require('../module/tools');
@@ -64,7 +63,8 @@ Vue.component('tic-project', {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json'
-				}
+				},
+        credentials: 'same-origin'
 			})
 			.then(response => response.json())
 			.then(function(data) {
@@ -86,7 +86,8 @@ Vue.component('tic-project', {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json'
-				}
+				},
+        credentials: 'same-origin'
 			})
 			.then(response => response.json())
 			.then(function(data) {
@@ -179,24 +180,24 @@ let projectBox = new Vue({
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
 				},
-                body: JSON.stringify({
-                    "operation": 'delete',
-                    "id": project.id,
-                }),
-                credentials: 'same-origin'
+        body: JSON.stringify({
+          "operation": 'delete',
+          "id": project.id,
+        }),
+        credentials: 'same-origin'
 			})
 			.then(response => response.json())
 			.then(data => {
-				if (data.code === 'ok') {
-                    this.projects.splice(index, 1);
-                } else {
-					alert('终止项目失败，请稍后重试。');
+        if (data.code === 'ok') {
+          this.projects.splice(index, 1);
+        } else {
+          alert('终止项目失败，请稍后重试。');
 				}
 			})
-			.catch(error => {
+			.catch(() => {
 				alert('出错了，请稍后重试。');
 			});
-        }
+		}
 	}
 });
 
@@ -221,7 +222,6 @@ let myProjectNav = new Vue({
 /**
  * [loadProject description]
  * @fileOverview 加载普通project列表
- * @param        {[int]}   pageNum [页码]
  */
 function loadProject() {
 	if (this.noMore) {
@@ -238,7 +238,8 @@ function loadProject() {
 		method: 'GET',
 		headers: {
 			'Accept': 'application/json'
-		}
+		},
+    credentials: 'same-origin'
 	})
 	.then(response => response.json())
 	.then(function(data) {

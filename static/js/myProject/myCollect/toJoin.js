@@ -60,11 +60,11 @@ window.addEventListener('load', function() {
 
 				fetch(urlToJoin, {
 					method: 'POST',
-					headers: {
-	                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-	                },
-	                credentials: 'same-origin',
-	                body: tool.formSerialize('#formToJoin')
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+          },
+          credentials: 'same-origin',
+          body: tool.formSerialize('#formToJoin')
 				})
 				.then(response => response.json())
 				.then(function(data) {

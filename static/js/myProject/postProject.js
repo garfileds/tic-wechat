@@ -172,12 +172,12 @@ let appPostProject = new Vue({
 
 			fetch(urlPostProject, {
 				method: 'POST',
-				headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-                    'Accept': 'application/json'
-                },
-                credentials: 'same-origin',
-                body: tools.formSerialize('#formPostProject')
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+          'Accept': 'application/json'
+        },
+        credentials: 'same-origin',
+        body: tools.formSerialize('#formPostProject')
 			})
 			.then(response => response.json())
 			.then(function(data) {

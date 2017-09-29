@@ -101,12 +101,12 @@ window.addEventListener('load', function() {
 
 				fetch(urlUpdateProject, {
 					method: 'POST',
-					headers: {
-	                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-	                    'Accept': 'application/json'
-	                },
-	                credentials: 'same-origin',
-	                body: tools.formSerialize('#formEditDetail')
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+            'Accept': 'application/json'
+          },
+          credentials: 'same-origin',
+          body: tools.formSerialize('#formEditDetail')
 				})
 				.then(response => response.json())
 				.then(function(data) {
