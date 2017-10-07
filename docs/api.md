@@ -932,7 +932,8 @@
 		"content": "这里就是项目的详情了，文字就不限量了，感觉应该加上可以添加图片的功能，这里的文字颜
         色是#222222，字号15。",
         "contact": "邮箱：yuqingyaa@163.com 如有疑问，敬请用以上方式咨询~",
-        "creationDate": "2016.01.28"
+        "creationDate": "2016.01.28",
+        "status": 0/1 //0表示未审核
 	},
 
   "projectCreator": {
