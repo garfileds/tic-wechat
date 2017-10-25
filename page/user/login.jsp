@@ -29,6 +29,9 @@
 				<a href="<c:url value='/user/register' />" class="tic-form-para">
 					没有账号？点击注册
 				</a>
+				<a href="<c:url value='/user/findPwd' />" class="tic-form-para">
+					找回密码
+				</a>
 			</form>
 		</main>
 	</fis:block>

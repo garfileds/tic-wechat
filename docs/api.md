@@ -628,16 +628,74 @@
 
    - api: /xdtic/fn/user/register
 
-    - 注册表单提交，api验证并跳转页面至登录页面（url: /xdtic/user）
+    - 说明：注册表单提交，api验证并跳转页面至登录页面（url: /xdtic/user）
     
-        - request `[POST]`
-        ```
-        {
-            username: "xxx",
-            password: "xxx",
-            passConfirm: "xxx"
-        }
-        ```
+    - request `[POST]`
+            ```
+            {
+                username: "xxx",
+                password: "xxx",
+                passConfirm: "xxx"
+            }
+            ```
+        
+#### 找回密码
+
+   - url: /xdtic/findpwd
+   - jsp: /page/user/findPwd.jsp
+   - jsp页面插值所需变量
+   ```
+      {
+       	"user": {
+       		"id": "u001",
+       		"username": "adoug"
+       	}
+       }
+   ```
+   - api: /xdtic/api/user/findPwd
+   
+      - 说明：找回密码
+      - request `[POST]`
+      ```json
+      {
+        "userId": "001",
+        "email": "123@qq.com"
+      }
+      ```
+      - response `[JSON]`
+      ```json
+      {
+        "code": "ok/error"
+      }
+      ```
+ 
+#### 找回密码：点击邮件的验证链接后服务端进行验证，然后跳转到的重置密码页
+
+   - url: /xdtic/resetPwd
+   - jsp: /page/user/resetPwd.jsp
+   - jsp页面插值所需变量
+   ```
+      {
+       	"user": {
+       		"id": "u001",
+       		"username": "adoug"
+       	}
+      }
+   ```
+   - api: /xdtic/fn/user/resetPwd
+     
+      - 说明：重置密码表单提交，api验证后跳转至/user/login登录页面
+      - request `[POST]` `[Form]`
+      ```
+      {
+        "userId": "001",
+        "username": "doug",
+        "passNew": "123",
+        "passNewConfirm": "123"
+      }
+      ```
+      
+   
 
 #### 用户中心页面
 

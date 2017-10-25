@@ -1,6 +1,5 @@
 'use strict';
 
-let Promise = require('es6-promise').Promise;
 require('whatwg-fetch');
 
 let MD5 = require('crypto-js/md5');

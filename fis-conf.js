@@ -3,7 +3,7 @@ fis.require('jello')(fis);
 /****************环境变量*****************/
 fis
   // 排除指定目录
-  .set('project.files', ['/docs/**', '/static/**', '/page/**', '/test/**', '/map.json', 'server.conf'])
+  .set('project.files', ['docs/**', 'static/**', 'page/**', 'test/**', 'map.json', 'server.conf'])
   .set('project.ignore', ['/dev/**', 'prod/**', 'tic/**', 'prod-tic/**'])
   .set('project.fileType.text', 'es');
 
@@ -114,6 +114,10 @@ fis.media('prod')
         '/static/js/user/resetPass.js'
       ],
 
+      'pkg/js/user/findPwd.js': [
+        '/static/js/user/findPwd.js'
+      ],
+
       'pkg/js/user/center.js': [
         '/static/js/user/center.js'
       ],
@@ -146,16 +150,18 @@ fis.media('prod')
     })
   })
   .match('/pkg/**.{js, es}', {
-    useHash: true/*,
+    useHash: true,
 
-     optimizer: fis.plugin('uglify-js')*/
+     optimizer: fis.plugin('uglify-js', {
+       sourceMap: {
+         url: 'inline'
+       }
+     })
   })
   .match('/pkg/**.{scss ,css}', {
-    useHash: true/*,
+    useHash: true,
 
-     optimizer: fis.plugin('clean-css',{
-     //option
-     })*/
+     optimizer: fis.plugin('clean-css')
   });
 
 fis.media('prod-tic')
@@ -195,6 +201,10 @@ fis.media('prod-tic')
 
       'pkg/js/user/msgs.js': [
         '/static/js/user/msgs.js'
+      ],
+
+      'pkg/js/user/findPwd.js': [
+        '/static/js/user/findPwd.js'
       ],
 
       'pkg/js/user/profile.js': [
@@ -237,16 +247,18 @@ fis.media('prod-tic')
     })
   })
   .match('/pkg/**.{js, es}', {
-    useHash: true/*,
+    useHash: true,
 
-    optimizer: fis.plugin('uglify-js')*/
+    optimizer: fis.plugin('uglify-js', {
+      sourceMap: {
+        url: 'inline'
+      }
+    })
   })
   .match('/pkg/**.{scss ,css}', {
-    useHash: true/*,
+    useHash: true,
     
-    optimizer: fis.plugin('clean-css',{
-        //option
-    })*/
+    optimizer: fis.plugin('clean-css')
   })
   .match('**.{scss, css, js, png, jpeg, jpg}', {
     url: '/xdtic$0'
