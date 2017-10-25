@@ -654,7 +654,7 @@
    ```
    - api: /xdtic/api/user/findPwd
    
-      - 说明：找回密码
+      - 说明：找回密码时所需要的邮箱
       - request `[POST]`
       ```json
       {

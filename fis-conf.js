@@ -118,6 +118,10 @@ fis.media('prod')
         '/static/js/user/findPwd.js'
       ],
 
+      'pkg/js/user/resetPwd.js': [
+        '/static/js/user/resetPwd.js'
+      ],
+
       'pkg/js/user/center.js': [
         '/static/js/user/center.js'
       ],
@@ -205,6 +209,10 @@ fis.media('prod-tic')
 
       'pkg/js/user/findPwd.js': [
         '/static/js/user/findPwd.js'
+      ],
+
+      'pkg/js/user/resetPwd.js': [
+        '/static/js/user/resetPwd.js'
       ],
 
       'pkg/js/user/profile.js': [

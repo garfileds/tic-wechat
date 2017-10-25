@@ -49,7 +49,7 @@ let formResetPwd = new Vue({
       return this.inputNull
     },
 
-    validForm: function(param) {
+    validForm: function() {
       if (this.validInputNull() || this.validPass()) {
         return
       }
